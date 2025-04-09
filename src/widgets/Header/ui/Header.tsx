@@ -1,12 +1,15 @@
 import Container from '../../../shared/ui/ResponsiveContainer';
-import logoSvg from '../../../assets/logo.svg';
 
 export default function Header() {
   return (
-    <Container className="flex justify-between items-center mt-6">
+    <Container className="flex justify-between items-center my-6">
       <div className="flex font-['jalnan'] text-2xl ">
         발바닥
-        <img src={logoSvg} alt="logo" className="w-8 -translate-y-0.5"></img>
+        <img
+          src="/img/logo.png"
+          alt="logo"
+          className="w-10 h-3 -translate-y-1"
+        ></img>
         구조대
       </div>
       <ul className="flex gap-8 font-['NanumSquareNeoBold']">
