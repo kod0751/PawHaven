@@ -1,18 +1,62 @@
-@import 'tailwindcss/preflight';
-@import 'tailwindcss/utilities';
+@import 'tailwindcss';
 
+html,
 body {
-  background-color: white;
-  color: #1a1a1a;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  color: #323232; /* 기본 글자 색상 */
   line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  font-weight: normal;
 }
 
 a {
-  text-decoration: none;
   color: inherit;
+  text-decoration: none;
 }
 
 ul,
 ol {
   list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
