@@ -60,3 +60,33 @@ svg {
   max-width: 100%;
   height: auto;
 }
+
+@font-face {
+  font-family: 'NanumSquareNeoLight';
+  src: url('./fonts/NanumSquareNeo-aLt.ttf');
+}
+
+@font-face {
+  font-family: 'NanumSquareNeo';
+  src: url('./fonts/NanumSquareNeo-bRg.ttf');
+}
+
+@font-face {
+  font-family: 'NanumSquareNeoBold';
+  src: url('./fonts/NanumSquareNeo-cBd.ttf');
+}
+
+@font-face {
+  font-family: 'NanumSquareNeoExtraBold';
+  src: url('./fonts/NanumSquareNeo-dEb.ttf');
+}
+
+@font-face {
+  font-family: 'NanumSquareNeoHeavy';
+  src: url('./fonts/NanumSquareNeo-eHv.ttf');
+}
+
+@font-face {
+  font-family: 'jalnan';
+  src: url('./fonts/Jalnan2TTF.ttf');
+}
