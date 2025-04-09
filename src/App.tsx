@@ -1,11 +1,7 @@
-import Container from './shared/ui/ResponsiveContainer';
+import { Header } from './widgets/Header';
 
 function App() {
-  return (
-    <Container className="py-8 bg-white">
-      <div>PawHaven</div>
-    </Container>
-  );
+  return <Header />;
 }
 
 export default App;
