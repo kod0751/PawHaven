@@ -3,7 +3,7 @@ import Container from '../../../shared/ui/ResponsiveContainer';
 export default function Header() {
   return (
     <Container className="flex justify-between items-center my-6">
-      <div className="flex font-['jalnan'] text-2xl ">
+      <div className="flex font-['jalnan'] text-2xl">
         발바닥
         <img
           src="/img/logo.png"
@@ -12,7 +12,7 @@ export default function Header() {
         ></img>
         구조대
       </div>
-      <ul className="flex gap-8 font-['NanumSquareNeoBold']">
+      <ul className="flex gap-8 font-['NanumSquareNeoExtraBold']">
         <li>유기동물보기</li>
         <li>털친소</li>
         <li>주변 보호소 찾기</li>

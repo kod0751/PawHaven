@@ -4,10 +4,10 @@ export default function HomeBanner() {
   return (
     <Container className="flex justify-around items-center gap-10 my-6">
       <div className="flex flex-col gap-0.5">
-        <span className="font-['NanumSquareNeoBold'] text-[2.5rem]">
+        <span className="font-['NanumSquareNeoExtraBold'] text-[2.5rem]">
           버려진 아이들과
         </span>
-        <span className="font-['NanumSquareNeoBold'] text-[2.5rem] mb-4">
+        <span className="font-['NanumSquareNeoExtraBold'] text-[2.5rem] mb-4">
           당신의 <span className="text-orange-500">운명적 만남</span>,
           찾고계신가요?
         </span>
