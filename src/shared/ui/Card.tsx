@@ -1,6 +1,8 @@
+import { Bookmark } from 'lucide-react';
+
 export default function Card() {
   return (
-    <div className="w-60 font-['NanumSquareNeoBold'] flex flex-col gap-1">
+    <div className="w-48 font-['NanumSquareNeoBold'] flex flex-col gap-1">
       <div>
         <img
           src="/img/exAnimal.png"
@@ -12,7 +14,7 @@ export default function Card() {
         <span className="font-[NanumSquareNeoHeavy] text-[1.2rem]">
           한국고양이
         </span>
-        <img src="./src/assets/icon.png" alt="북마크" />
+        <Bookmark />
       </div>
       <div className="flex justify-between items-center text-[0.9rem]">
         <span>나이</span>
