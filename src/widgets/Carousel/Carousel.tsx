@@ -48,15 +48,13 @@ export default function Carousel() {
           }}
           className="w-full"
         >
-          {Array(9)
-            .fill(0)
-            .map((_, index) => (
-              <SwiperSlide key={index}>
-                <div className="w-full h-full flex items-center justify-center">
-                  <Card />
-                </div>
-              </SwiperSlide>
-            ))}
+          {data?.map((value, index) => (
+            <SwiperSlide key={index}>
+              <div className="w-full h-full flex items-center justify-center">
+                <Card data={value} />
+              </div>
+            </SwiperSlide>
+          ))}
         </Swiper>
 
         <button
