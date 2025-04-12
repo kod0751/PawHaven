@@ -6,8 +6,15 @@ import 'swiper/css/navigation';
 import Card from '../../shared/ui/Card';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useRef } from 'react';
+import { useOneDayList } from '../../features/carousel/hooks/useOneDayList';
+import { getTomorrowDateString } from '../../shared/utils/date';
 
 export default function Carousel() {
+  const tomorrowDate = getTomorrowDateString();
+  const { data } = useOneDayList(tomorrowDate);
+
+  console.log(data);
+
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
