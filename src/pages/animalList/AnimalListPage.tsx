@@ -1,3 +1,11 @@
+import { Carousel } from '../../widgets/Carousel';
+import Category from '../../widgets/Category/Category';
+
 export default function AnimalListPage() {
-  return <div>AnimalListPage</div>;
+  return (
+    <div>
+      <Carousel />
+      <Category />
+    </div>
+  );
 }
