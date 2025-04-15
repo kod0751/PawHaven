@@ -1,9 +1,11 @@
-import { useAnimalList } from '../../features/animalList/model/useAnimalList';
+import { usePaginatedAnimalList } from '../../features/animalList/model/usePaginatedAnimalList';
 import Card from '../../shared/ui/Card';
+import Pagination from '../../shared/ui/PagiNation';
 import Container from '../../shared/ui/ResponsiveContainer';
 
 export default function AnimalList() {
-  const { data } = useAnimalList();
+  const { data, currentPage, totalPages, handlePageChange } =
+    usePaginatedAnimalList(15);
 
   return (
     <Container>
@@ -25,6 +27,14 @@ export default function AnimalList() {
           <Card key={index} data={value}></Card>
         ))}
       </div>
+
+      {totalPages > 1 && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+        />
+      )}
     </Container>
   );
 }
