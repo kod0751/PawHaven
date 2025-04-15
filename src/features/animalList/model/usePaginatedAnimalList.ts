@@ -18,6 +18,7 @@ export function usePaginatedAnimalList(itemsPerPage = 15) {
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
+    //window.scrollTo({ top: 0, behavior: "smooth" }) - 페이지 변경 시 상단으로
   };
 
   return {
