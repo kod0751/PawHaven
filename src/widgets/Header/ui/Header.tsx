@@ -2,7 +2,7 @@ import Container from '../../../shared/ui/ResponsiveContainer';
 
 export default function Header() {
   return (
-    <Container className="flex justify-between items-center my-6">
+    <Container className="flex justify-between items-center py-8">
       <div className="flex font-['jalnan'] text-2xl">
         발바닥
         <img

@@ -2,7 +2,7 @@ import Container from '../../../shared/ui/ResponsiveContainer';
 
 export default function HomeBanner() {
   return (
-    <Container className="flex justify-between items-center gap-10 my-8">
+    <Container className="flex justify-between items-center gap-10 py-8">
       <div className="flex flex-col gap-1">
         <span className="font-['NanumSquareNeoExtraBold'] text-5xl mb-4">
           버려진 아이들과

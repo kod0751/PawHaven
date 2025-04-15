@@ -7,7 +7,7 @@ import AnimalListPage from './pages/animalList/AnimalListPage';
 function App() {
   return (
     <BrowserRouter>
-      <Header />;
+      <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/list" element={<AnimalListPage />} />

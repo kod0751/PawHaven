@@ -19,7 +19,7 @@ export default function Carousel() {
   const nextRef = useRef(null);
 
   return (
-    <Container className="justify-between items-center my-8 relative">
+    <Container className="justify-between items-center py-8 relative">
       <div className="font-['NanumSquareNeoExtraBold'] text-4xl my-8">
         공고기간이 하루 남은 친구들이에요!
       </div>
