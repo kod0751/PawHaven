@@ -5,7 +5,7 @@ import HomeBanner from './components/HomeBanner';
 export default function HomePage() {
   const { data } = useAnimalList();
 
-  console.log('Animal Data:', data); // 여기에 찍힘!
+  console.log('Animal Data:', data);
 
   return (
     <div>
