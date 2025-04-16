@@ -7,7 +7,7 @@ type CardProps = {
 
 export default function Card({ data }: CardProps) {
   return (
-    <div className="w-48 font-['NanumSquareNeoBold'] flex flex-col gap-1">
+    <div className="w-60 font-['NanumSquareNeoBold'] flex flex-col gap-1">
       <div>
         <img
           className="w-full aspect-square object-cover rounded-2xl"
