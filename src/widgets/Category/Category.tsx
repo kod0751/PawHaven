@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import Container from '../../shared/ui/ResponsiveContainer';
+import { FilterOptions } from '../../features/animalList/model/useFilteredAnimalList';
 
 const regions = [
   '전체',
@@ -51,21 +52,31 @@ const categories = [
   { id: 'neutered', label: '중성화', options: neutered },
 ];
 
-export default function CategoryFilter() {
+interface CategoryFilterProps {
+  filters: FilterOptions;
+  onFilterChange: (filters: FilterOptions) => void;
+}
+
+export default function CategoryFilter({
+  filters,
+  onFilterChange,
+}: CategoryFilterProps) {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
-  const [selectedOptions, setSelectedOptions] = useState<
-    Record<string, string>
-  >({});
 
   const toggleCategory = (categoryId: string) => {
     setActiveCategory(activeCategory === categoryId ? null : categoryId);
   };
 
   const selectOption = (categoryId: string, option: string) => {
-    setSelectedOptions({
-      ...selectedOptions,
-      [categoryId]: option,
-    });
+    const newFilters = { ...filters };
+
+    if (option === '전체') {
+      delete newFilters[categoryId as keyof FilterOptions];
+    } else {
+      newFilters[categoryId as keyof FilterOptions] = option;
+    }
+
+    onFilterChange(newFilters);
     setActiveCategory(null);
   };
 
@@ -80,7 +91,7 @@ export default function CategoryFilter() {
             >
               <span>{category.label}</span>
               <span className="text-sm text-gray-500">
-                {selectedOptions[category.id] ?? ''}
+                {filters[category.id as keyof FilterOptions] ?? ''}
               </span>
               <ChevronDown className="w-4 h-4" />
             </button>
@@ -91,7 +102,7 @@ export default function CategoryFilter() {
                   <button
                     key={option}
                     className={`block w-full text-left px-4 py-2 text-sm ${
-                      option === selectedOptions[category.id]
+                      option === filters[category.id as keyof FilterOptions]
                         ? 'text-orange-500 font-medium'
                         : 'text-gray-700 hover:bg-gray-100'
                     }`}
