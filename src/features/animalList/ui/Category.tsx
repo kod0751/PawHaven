@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
-import Container from '../../shared/ui/ResponsiveContainer';
-import { FilterOptions } from '../../features/animalList/model/useFilteredAnimalList';
+import Container from '../../../shared/ui/ResponsiveContainer';
+import { FilterOptions } from '../model/useFilteredAnimalList';
 
 const regions = [
   '전체',
