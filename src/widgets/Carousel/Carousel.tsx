@@ -6,7 +6,7 @@ import 'swiper/css/navigation';
 import Card from '../../shared/ui/Card';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useRef } from 'react';
-import { useOneDayList } from '../../features/carousel/hooks/useOneDayList';
+import { useOneDayList } from '../../features/carousel/model/useOneDayList';
 import { getTomorrowDateString } from '../../shared/utils/date';
 
 export default function Carousel() {
