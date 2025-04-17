@@ -1,5 +1,5 @@
 import { useFilteredAnimalList } from '../../features/animalList/model/useFilteredAnimalList';
-import AnimalList from '../../widgets/AnimalList/animalList';
+import AnimalList from '../../features/animalList/ui/AnimalList';
 import { Carousel } from '../../widgets/Carousel';
 import CategoryFilter from '../../widgets/Category/Category';
 

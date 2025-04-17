@@ -1,7 +1,7 @@
-import { AnimalData } from '../../shared/api/types';
-import Card from '../../shared/ui/Card';
-import Pagination from '../../shared/ui/PagiNation';
-import Container from '../../shared/ui/ResponsiveContainer';
+import { AnimalData } from '../../../shared/api/types';
+import Card from '../../../shared/ui/Card';
+import Pagination from '../../../shared/ui/PagiNation';
+import Container from '../../../shared/ui/ResponsiveContainer';
 import { useState } from 'react';
 
 interface AnimalListProps {
