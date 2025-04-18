@@ -1,15 +1,23 @@
 import Card from '../../../shared/ui/Card';
 import Pagination from '../../../shared/ui/PagiNation';
 import Container from '../../../shared/ui/ResponsiveContainer';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AnimalListProps } from '../model/types';
 
-export default function AnimalList({ animals, isLoading }: AnimalListProps) {
+export default function AnimalList({
+  animals,
+  isLoading,
+  filters,
+}: AnimalListProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 15;
 
   const totalCount = animals.length;
   const totalPages = Math.ceil(totalCount / pageSize);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [filters]);
 
   const paginatedAnimals = animals.slice(
     (currentPage - 1) * pageSize,

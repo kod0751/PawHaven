@@ -10,7 +10,7 @@ export default function AnimalListPage() {
     <div>
       <Carousel />
       <CategoryFilter filters={filters} onFilterChange={setFilters} />
-      <AnimalList animals={data} isLoading={isLoading} />
+      <AnimalList animals={data} isLoading={isLoading} filters={filters} />
     </div>
   );
 }

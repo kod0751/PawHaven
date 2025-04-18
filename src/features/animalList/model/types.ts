@@ -3,6 +3,7 @@ import { AnimalData } from '../../../shared/api/types';
 export interface AnimalListProps {
   animals: AnimalData[];
   isLoading: boolean;
+  filters: FilterOptions;
 }
 
 export interface FilterOptions {
