@@ -1,15 +1,7 @@
 import { useState, useMemo } from 'react';
 import { useAnimalList } from './useAnimalList';
 import { calculatePetAge } from '../../../shared/utils/calculatePetAge';
-
-export type FilterOptions = {
-  region?: string;
-  status?: string;
-  breed?: string;
-  age?: string;
-  gender?: string;
-  neutered?: string;
-};
+import { FilterOptions } from './types';
 
 export function useFilteredAnimalList() {
   const { data: allAnimals, isLoading, error } = useAnimalList();

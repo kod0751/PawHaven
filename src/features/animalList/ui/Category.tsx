@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import Container from '../../../shared/ui/ResponsiveContainer';
-import { FilterOptions } from '../model/useFilteredAnimalList';
+import { CategoryFilterProps, FilterOptions } from '../model/types';
 
 const regions = [
   '전체',
@@ -51,11 +51,6 @@ const categories = [
   { id: 'gender', label: '성별', options: gender },
   { id: 'neutered', label: '중성화', options: neutered },
 ];
-
-interface CategoryFilterProps {
-  filters: FilterOptions;
-  onFilterChange: (filters: FilterOptions) => void;
-}
 
 export default function CategoryFilter({
   filters,
