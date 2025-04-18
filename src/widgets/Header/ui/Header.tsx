@@ -34,7 +34,7 @@ export default function Header() {
         <Link to="/shelter">
           <li
             className={`relative transition-all ${
-              currentPath === '/list'
+              currentPath === '/shelter'
                 ? 'text-orange-500'
                 : 'hover:text-orange-400'
             }`}
