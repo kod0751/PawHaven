@@ -31,7 +31,17 @@ export default function Header() {
           </li>
         </Link>
         <li>털친소</li>
-        <li>주변 보호소 찾기</li>
+        <Link to="/shelter">
+          <li
+            className={`relative transition-all ${
+              currentPath === '/list'
+                ? 'text-orange-500'
+                : 'hover:text-orange-400'
+            }`}
+          >
+            주변 보호소 찾기
+          </li>
+        </Link>
         <li>나의 관심동물</li>
       </ul>
     </Container>
