@@ -107,10 +107,7 @@ export default function ShelterMap() {
           lat: 37.5401156,
           lng: 126.8700487,
         }}
-        style={{
-          width: '100%',
-          height: '35rem',
-        }}
+        className="w-full h-120 rounded-2xl"
         level={10}
       >
         {positions.map((loc, index) => (
