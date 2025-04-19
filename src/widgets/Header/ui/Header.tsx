@@ -42,7 +42,17 @@ export default function Header() {
             주변 보호소 찾기
           </li>
         </Link>
-        <li>나의 관심동물</li>
+        <Link to="/liked">
+          <li
+            className={`relative transition-all ${
+              currentPath === '/liked'
+                ? 'text-orange-500'
+                : 'hover:text-orange-400'
+            }`}
+          >
+            나의 관심동물
+          </li>
+        </Link>
       </ul>
     </Container>
   );
