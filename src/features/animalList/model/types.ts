@@ -13,6 +13,7 @@ export interface FilterOptions {
   age?: string;
   gender?: string;
   neutered?: string;
+  shelter?: string;
 }
 
 export interface PaginationProps {

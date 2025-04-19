@@ -72,6 +72,12 @@ export function useFilteredAnimalList() {
         animal.NEUT_YN !== mappedNeuterd
       )
         return false;
+      if (
+        filters.shelter &&
+        filters.shelter !== '' &&
+        animal.SHTER_NM !== filters.shelter
+      )
+        return false;
 
       return true;
     });

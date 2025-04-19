@@ -7,7 +7,7 @@ export default function AnimalByShelterPage() {
   const { filters, setFilters, data, isLoading } = useFilteredAnimalList();
   return (
     <div>
-      <ShelterMap />
+      <ShelterMap filters={filters} onFilterChange={setFilters} />
       <CategoryFilter filters={filters} onFilterChange={setFilters} />
       <AnimalList animals={data} isLoading={isLoading} filters={filters} />
     </div>

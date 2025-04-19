@@ -1,7 +1,11 @@
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 import Container from '../../shared/ui/ResponsiveContainer';
+import { CategoryFilterProps } from '../../features/animalList/model/types';
 
-export default function ShelterMap() {
+export default function ShelterMap({
+  filters,
+  onFilterChange,
+}: CategoryFilterProps) {
   const positions = [
     {
       title: '가평군유기동물보호소',
@@ -97,6 +101,13 @@ export default function ShelterMap() {
     },
   ];
 
+  const handleShelterClick = (shelterName: string) => {
+    onFilterChange({
+      ...filters,
+      shelter: shelterName,
+    });
+  };
+
   return (
     <Container className="py-8">
       <div className="font-['NanumSquareNeoExtraBold'] text-4xl my-8">
@@ -119,6 +130,7 @@ export default function ShelterMap() {
               size: { width: 22, height: 20 },
             }}
             title={loc.title}
+            onClick={() => handleShelterClick(loc.title)}
           />
         ))}
       </Map>
