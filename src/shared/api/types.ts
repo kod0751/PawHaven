@@ -1,4 +1,5 @@
 export interface AnimalData {
+  ABDM_IDNTFY_NO: string;
   IMAGE_COURS: string;
   AGE_INFO: string;
   SPECIES_NM: string;
