@@ -1,12 +1,35 @@
 import { Bookmark } from 'lucide-react';
 import { AnimalData } from '../api/types';
 import { calculatePetAge } from '../utils/calculatePetAge';
+import { useEffect, useState } from 'react';
 
 type CardProps = {
   data: AnimalData;
 };
 
 export default function Card({ data }: CardProps) {
+  const [isBookmarked, setIsBookmarked] = useState(false);
+
+  useEffect(() => {
+    const bookmarks = JSON.parse(
+      localStorage.getItem('bookmarkedAnimals') || '[]'
+    );
+    setIsBookmarked(bookmarks.includes(data.ABDM_IDNTFY_NO));
+  }, [data.ABDM_IDNTFY_NO]);
+
+  const toggleBookmark = () => {
+    const bookmarks = JSON.parse(
+      localStorage.getItem('bookmarkedAnimals') || '[]'
+    );
+
+    const newBookmarks = isBookmarked
+      ? bookmarks.filter((id: string) => id !== data.ABDM_IDNTFY_NO)
+      : [...bookmarks, data.ABDM_IDNTFY_NO];
+
+    localStorage.setItem('bookmarkedAnimals', JSON.stringify(newBookmarks));
+    setIsBookmarked(!isBookmarked);
+  };
+
   return (
     <div className="w-60 font-['NanumSquareNeoBold'] flex flex-col gap-1">
       <div>
@@ -20,7 +43,9 @@ export default function Card({ data }: CardProps) {
         <span className="font-[NanumSquareNeoHeavy] text-[1.2rem]">
           {data.SPECIES_NM.replace(/\[.*?\]\s*/, '')}
         </span>
-        <Bookmark />
+        <button onClick={toggleBookmark} className="focus:outline-none">
+          <Bookmark fill={isBookmarked ? '#F97316' : 'none'} color="#F97316" />
+        </button>
       </div>
       <div className="flex justify-between items-center text-[0.9rem]">
         <span>나이</span>
