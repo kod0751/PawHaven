@@ -11,23 +11,37 @@ export default function Card({ data }: CardProps) {
   const [isBookmarked, setIsBookmarked] = useState(false);
 
   useEffect(() => {
-    const bookmarks = JSON.parse(
+    const existingBookmarks = JSON.parse(
       localStorage.getItem('bookmarkedAnimals') || '[]'
     );
-    setIsBookmarked(bookmarks.includes(data.ABDM_IDNTFY_NO));
+    const bookmarked = existingBookmarks.some(
+      (item: AnimalData) => item.ABDM_IDNTFY_NO === data.ABDM_IDNTFY_NO
+    );
+    setIsBookmarked(bookmarked);
   }, [data.ABDM_IDNTFY_NO]);
 
   const toggleBookmark = () => {
-    const bookmarks = JSON.parse(
+    const existingBookmarks = JSON.parse(
       localStorage.getItem('bookmarkedAnimals') || '[]'
     );
 
-    const newBookmarks = isBookmarked
-      ? bookmarks.filter((id: string) => id !== data.ABDM_IDNTFY_NO)
-      : [...bookmarks, data.ABDM_IDNTFY_NO];
-
-    localStorage.setItem('bookmarkedAnimals', JSON.stringify(newBookmarks));
-    setIsBookmarked(!isBookmarked);
+    if (isBookmarked) {
+      const updatedBookmarks = existingBookmarks.filter(
+        (item: AnimalData) => item.ABDM_IDNTFY_NO !== data.ABDM_IDNTFY_NO
+      );
+      localStorage.setItem(
+        'bookmarkedAnimals',
+        JSON.stringify(updatedBookmarks)
+      );
+      setIsBookmarked(false);
+    } else {
+      const updatedBookmarks = [...existingBookmarks, data];
+      localStorage.setItem(
+        'bookmarkedAnimals',
+        JSON.stringify(updatedBookmarks)
+      );
+      setIsBookmarked(true);
+    }
   };
 
   return (
