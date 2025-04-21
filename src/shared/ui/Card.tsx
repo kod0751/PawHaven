@@ -1,48 +1,14 @@
 import { Bookmark } from 'lucide-react';
 import { AnimalData } from '../api/types';
 import { calculatePetAge } from '../utils/calculatePetAge';
-import { useEffect, useState } from 'react';
+import { useBookmark } from '../lib/hooks/useBookmark';
 
 type CardProps = {
   data: AnimalData;
 };
 
 export default function Card({ data }: CardProps) {
-  const [isBookmarked, setIsBookmarked] = useState(false);
-
-  useEffect(() => {
-    const existingBookmarks = JSON.parse(
-      localStorage.getItem('bookmarkedAnimals') || '[]'
-    );
-    const bookmarked = existingBookmarks.some(
-      (item: AnimalData) => item.ABDM_IDNTFY_NO === data.ABDM_IDNTFY_NO
-    );
-    setIsBookmarked(bookmarked);
-  }, [data.ABDM_IDNTFY_NO]);
-
-  const toggleBookmark = () => {
-    const existingBookmarks = JSON.parse(
-      localStorage.getItem('bookmarkedAnimals') || '[]'
-    );
-
-    if (isBookmarked) {
-      const updatedBookmarks = existingBookmarks.filter(
-        (item: AnimalData) => item.ABDM_IDNTFY_NO !== data.ABDM_IDNTFY_NO
-      );
-      localStorage.setItem(
-        'bookmarkedAnimals',
-        JSON.stringify(updatedBookmarks)
-      );
-      setIsBookmarked(false);
-    } else {
-      const updatedBookmarks = [...existingBookmarks, data];
-      localStorage.setItem(
-        'bookmarkedAnimals',
-        JSON.stringify(updatedBookmarks)
-      );
-      setIsBookmarked(true);
-    }
-  };
+  const { isBookmarked, toggleBookmark } = useBookmark(data);
 
   return (
     <div className="w-60 font-['NanumSquareNeoBold'] flex flex-col gap-1">
