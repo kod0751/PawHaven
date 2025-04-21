@@ -1,5 +1,6 @@
 import { Bookmark } from 'lucide-react';
 import { AnimalData } from '../api/types';
+import { calculatePetAge } from '../utils/calculatePetAge';
 
 type CardProps = {
   data: AnimalData;
@@ -23,7 +24,7 @@ export default function Card({ data }: CardProps) {
       </div>
       <div className="flex justify-between items-center text-[0.9rem]">
         <span>나이</span>
-        <p>{data.AGE_INFO}살</p>
+        <p>{calculatePetAge(data.AGE_INFO)}살</p>
       </div>
       <div className="flex justify-between items-center text-[0.9rem]">
         <span>시도군</span>
