@@ -55,8 +55,9 @@ export default function AnimalList({
                 <Card key={index} data={animal}></Card>
               ))
             ) : (
-              <div className="col-span-full text-center text-gray-500 my-100 font-['NanumSquareNeo']">
-                조건에 맞는 동물이 없습니다.
+              <div className="col-span-full text-center text-gray-500 my-30 font-['NanumSquareNeo']">
+                <img src="/img/banner.png" alt="배너" className="w-lg h-auto" />
+                조건에 맞는 친구들이 없습니다.
               </div>
             )}
           </div>
