@@ -31,7 +31,7 @@ export default function AnimalList({
   };
 
   return (
-    <Container>
+    <Container className="py-8">
       <div className="font-['NanumSquareNeoExtraBold'] text-4xl my-8">
         {titleByPage(pageType, totalCount, filters)}
       </div>

@@ -76,7 +76,7 @@ export default function CategoryFilter({
   };
 
   return (
-    <Container className="py-8">
+    <Container className="pt-8">
       <div className="flex flex-wrap gap-2">
         {categories.map((category) => (
           <div key={category.id} className="relative inline-block">
