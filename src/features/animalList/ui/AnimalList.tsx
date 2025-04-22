@@ -3,11 +3,13 @@ import Pagination from '../../../shared/ui/PagiNation';
 import Container from '../../../shared/ui/ResponsiveContainer';
 import { useEffect, useState } from 'react';
 import { AnimalListProps } from '../model/types';
+import { titleByPage } from '../../../shared/utils/titleByPage';
 
 export default function AnimalList({
   animals,
   isLoading,
   filters,
+  pageType,
 }: AnimalListProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 15;
@@ -31,8 +33,7 @@ export default function AnimalList({
   return (
     <Container>
       <div className="font-['NanumSquareNeoExtraBold'] text-4xl my-8">
-        <span className="text-orange-500">{totalCount}</span>마리의 친구들이
-        기다리고 있어요
+        {titleByPage(pageType, totalCount, filters)}
       </div>
 
       {isLoading ? (

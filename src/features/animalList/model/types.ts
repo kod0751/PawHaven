@@ -2,8 +2,9 @@ import { AnimalData } from '../../../shared/api/types';
 
 export interface AnimalListProps {
   animals: AnimalData[];
-  isLoading: boolean;
-  filters: FilterOptions;
+  isLoading?: boolean;
+  filters?: FilterOptions;
+  pageType: 'liked' | 'shelter' | 'list';
 }
 
 export interface FilterOptions {
