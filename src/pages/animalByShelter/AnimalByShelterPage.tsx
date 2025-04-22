@@ -9,7 +9,12 @@ export default function AnimalByShelterPage() {
     <div>
       <ShelterMap filters={filters} onFilterChange={setFilters} />
       <CategoryFilter filters={filters} onFilterChange={setFilters} />
-      <AnimalList animals={data} isLoading={isLoading} filters={filters} />
+      <AnimalList
+        animals={data}
+        isLoading={isLoading}
+        filters={filters}
+        pageType="shelter"
+      />
     </div>
   );
 }
