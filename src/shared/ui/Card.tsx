@@ -2,6 +2,7 @@ import { Bookmark } from 'lucide-react';
 import { AnimalData } from '../api/types';
 import { calculatePetAge } from '../utils/calculatePetAge';
 import { useBookmark } from '../lib/hooks/useBookmark';
+import { useNavigate } from 'react-router-dom';
 
 type CardProps = {
   data: AnimalData;
@@ -9,6 +10,11 @@ type CardProps = {
 
 export default function Card({ data }: CardProps) {
   const { isBookmarked, toggleBookmark } = useBookmark(data);
+  const navigate = useNavigate();
+
+  const goToDetail = () => {
+    navigate(`/detail/${data.ABDM_IDNTFY_NO}`);
+  };
 
   return (
     <div className="w-60 font-['NanumSquareNeoBold'] flex flex-col gap-1">
@@ -17,6 +23,7 @@ export default function Card({ data }: CardProps) {
           className="w-full aspect-square object-cover rounded-2xl"
           src={data.IMAGE_COURS}
           alt="동물"
+          onClick={goToDetail}
         />
       </div>
       <div className="flex justify-between">
