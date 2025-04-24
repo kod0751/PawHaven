@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { AnimalData } from '../../api/types';
 
-export function useBookmark(data: AnimalData) {
+export function useBookmark(data: AnimalData | undefined) {
   const [isBookmarked, setIsBookmarked] = useState(false);
 
   useEffect(() => {
+    if (!data) return;
+
     const existingBookmarks = JSON.parse(
       localStorage.getItem('bookmarkedAnimals') || '[]'
     );
@@ -12,9 +14,11 @@ export function useBookmark(data: AnimalData) {
       (item: AnimalData) => item.ABDM_IDNTFY_NO === data.ABDM_IDNTFY_NO
     );
     setIsBookmarked(bookmarked);
-  }, [data.ABDM_IDNTFY_NO]);
+  }, [data?.ABDM_IDNTFY_NO]);
 
   const toggleBookmark = () => {
+    if (!data) return;
+
     const existingBookmarks = JSON.parse(
       localStorage.getItem('bookmarkedAnimals') || '[]'
     );
