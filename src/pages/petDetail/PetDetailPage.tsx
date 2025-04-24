@@ -2,10 +2,13 @@ import { useParams } from 'react-router-dom';
 import Container from '../../shared/ui/ResponsiveContainer';
 import { useGetDetail } from '../../shared/api/useGetDetail';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
+import { useBookmark } from '../../shared/lib/hooks/useBookmark';
+import { Bookmark } from 'lucide-react';
 
 export default function PetDetailPage() {
   const { id } = useParams();
   const { data, isLoading } = useGetDetail(id);
+  const { isBookmarked, toggleBookmark } = useBookmark(data);
 
   if (isLoading) return <div className="text-center mt-10">로딩 중...</div>;
   if (!data)
@@ -22,16 +25,23 @@ export default function PetDetailPage() {
   return (
     <>
       {data ? (
-        <Container>
+        <Container className="py-8">
           <div>
-            <div className="text-4xl font-[NanumSquareNeoExtraBold] text-black my-8 ml-8">
+            <div className="text-4xl font-[NanumSquareNeoExtraBold] text-black my-8 flex items-center">
+              <button onClick={toggleBookmark} className="focus:outline-none">
+                <Bookmark
+                  fill={isBookmarked ? '#F97316' : 'none'}
+                  size={40}
+                  color="#F97316"
+                />
+              </button>
               <span className=" text-orange-500 px-3 py-1 rounded-full mr-2">
                 공고번호
               </span>
               {data.PBLANC_IDNTFY_NO}
             </div>
-            <div className="flex justify-center gap-28 flex-wrap px-8">
-              <div className="w-[35rem] h-[35rem]">
+            <div className="flex justify-center gap-40 flex-wrap p-8">
+              <div className="w-xl h-xl">
                 <img
                   src={data.IMAGE_COURS}
                   alt="동물 이미지"
@@ -74,7 +84,7 @@ export default function PetDetailPage() {
               </div>
             </div>
             <div>
-              <div className="text-4xl font-[NanumSquareNeoExtraBold] text-black my-8 ml-8">
+              <div className="text-4xl font-[NanumSquareNeoExtraBold] text-black my-8">
                 <span className=" text-orange-500 px-3 py-1 rounded-full mr-2">
                   {data.SHTER_NM}
                 </span>
