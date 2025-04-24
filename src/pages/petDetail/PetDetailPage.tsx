@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import Container from '../../shared/ui/ResponsiveContainer';
 import { useGetDetail } from '../../shared/api/useGetDetail';
+import { Map, MapMarker } from 'react-kakao-maps-sdk';
 
 export default function PetDetailPage() {
   const { id } = useParams();
@@ -71,6 +72,38 @@ export default function PetDetailPage() {
                   </div>
                 ))}
               </div>
+            </div>
+            <div>
+              <div className="text-4xl font-[NanumSquareNeoExtraBold] text-black my-8 ml-8">
+                <span className=" text-orange-500 px-3 py-1 rounded-full mr-2">
+                  {data.SHTER_NM}
+                </span>
+                에서 기다리고 있어요
+              </div>
+              <Map
+                center={{
+                  lat: parseFloat(data.REFINE_WGS84_LAT),
+                  lng: parseFloat(data.REFINE_WGS84_LOGT),
+                }}
+                className="w-full h-120 mb-16 rounded-2xl"
+                level={6}
+              >
+                <MapMarker
+                  position={{
+                    lat: parseFloat(data.REFINE_WGS84_LAT),
+                    lng: parseFloat(data.REFINE_WGS84_LOGT),
+                  }}
+                  image={{
+                    src: '/img/logo.png',
+                    size: { width: 22, height: 20 },
+                  }}
+                  title={data.SHTER_NM}
+                >
+                  <div style={{ padding: '0.3rem', color: '#000' }}>
+                    {data.SHTER_NM}
+                  </div>
+                </MapMarker>
+              </Map>
             </div>
           </div>
         </Container>
