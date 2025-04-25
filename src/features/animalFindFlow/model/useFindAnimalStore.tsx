@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 
 type FindAnimalData = {
-  kind: string;
+  species: string;
   gender: string;
   weight: string;
   color: string;
@@ -18,7 +18,7 @@ type FindAnimalStore = {
 
 export const useFindAnimalStore = create<FindAnimalStore>((set) => ({
   step: 0,
-  findAnimalData: { kind: '', gender: '', weight: '', color: '' },
+  findAnimalData: { species: '', gender: '', weight: '', color: '' },
   nextStep: () => set((state) => ({ step: state.step + 1 })),
   prevStep: () => set((state) => ({ step: Math.max(state.step - 1, 0) })),
   updateAnimalData: (key, value) =>
@@ -28,6 +28,6 @@ export const useFindAnimalStore = create<FindAnimalStore>((set) => ({
   reset: () =>
     set(() => ({
       step: 0,
-      findAnimalData: { kind: '', gender: '', weight: '', color: '' },
+      findAnimalData: { species: '', gender: '', weight: '', color: '' },
     })),
 }));
