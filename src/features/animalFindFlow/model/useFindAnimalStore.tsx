@@ -16,7 +16,7 @@ type FindAnimalStore = {
   reset: () => void;
 };
 
-export const useFindPetStore = create<FindAnimalStore>((set) => ({
+export const useFindAnimalStore = create<FindAnimalStore>((set) => ({
   step: 0,
   animalData: { kind: '', gender: '', weight: '', color: '' },
   nextStep: () => set((state) => ({ step: state.step + 1 })),
