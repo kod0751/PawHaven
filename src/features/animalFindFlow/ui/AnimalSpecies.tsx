@@ -3,9 +3,9 @@ import { useFindAnimalStore } from '../model/useFindAnimalStore';
 import Progressbar from '../../../shared/ui/ProgressBar';
 
 const buttonData = [
-  { species: '강아지', img: '/img/dog.png', alt: '강아지' },
-  { species: '고양이', img: '/img/cat.png', alt: '고양이' },
-  { species: '그외', img: '/img/rabbit.png', alt: '그 외' },
+  { species: '강아지', img: '/img/dog.png', label: '강아지', alt: '강아지' },
+  { species: '고양이', img: '/img/cat.png', label: '고양이', alt: '고양이' },
+  { species: '그외', img: '/img/rabbit.png', label: '그 외', alt: '그 외' },
 ];
 
 export default function AnimalSpecies() {
@@ -46,7 +46,7 @@ export default function AnimalSpecies() {
               alt={button.alt}
               className="mb-4 w-24 h-24 object-contain"
             />
-            {button.species}
+            {button.label}
           </button>
         ))}
       </div>
