@@ -38,7 +38,7 @@ export default function AnimalSpecies() {
             className={`w-40 h-40 border-2 rounded-xl bg-inherit cursor-pointer flex flex-col justify-center items-center font-[NanumSquareNeoBold] text-lg text-black ${
               selectedSpecies === button.species
                 ? 'border-orange-500 shadow-md shadow-orange-500/40 transition duration-300'
-                : 'border-[#e5e5e5]'
+                : 'border-gray-200'
             }`}
           >
             <img
