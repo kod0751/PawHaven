@@ -31,7 +31,7 @@ export default function AnimalWeight() {
 
   return (
     <>
-      <Progressbar number={2} />
+      <Progressbar number={3} />
       <div className="flex flex-col justify-center items-center pt-20 gap-4 text-black font-bold text-4xl font-[NanumSquareNeoExtraBold]">
         <span>백만장자에게 금고를 선물 받았다.</span>
         <span>금고 안에 어떤게 한가득 쌓여 있을까?</span>
