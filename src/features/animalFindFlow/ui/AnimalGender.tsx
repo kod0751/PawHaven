@@ -48,7 +48,7 @@ export default function AnimalGender() {
             <img
               src={button.img}
               alt={button.alt}
-              className="mb-4 w-24 h-24 object-contain"
+              className="mb-4 w-20 h-20 object-contain"
             />
             {button.label}
           </button>
