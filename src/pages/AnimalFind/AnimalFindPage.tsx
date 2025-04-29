@@ -1,6 +1,7 @@
 import { useFindAnimalStore } from '../../features/animalFindFlow/model/useFindAnimalStore';
 import AnimalColor from '../../features/animalFindFlow/ui/AnimalColor';
 import AnimalGender from '../../features/animalFindFlow/ui/AnimalGender';
+import AnimalResult from '../../features/animalFindFlow/ui/AnimalResult';
 import AnimalSpecies from '../../features/animalFindFlow/ui/AnimalSpecies';
 import AnimalWeight from '../../features/animalFindFlow/ui/AnimalWeight';
 
@@ -12,6 +13,7 @@ export default function AnimalFindPage() {
       {step === 1 && <AnimalGender />}
       {step === 2 && <AnimalWeight />}
       {step === 3 && <AnimalColor />}
+      {step === 4 && <AnimalResult />}
     </div>
   );
 }
