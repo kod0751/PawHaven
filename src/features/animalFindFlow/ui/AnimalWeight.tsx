@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Progressbar from '../../../shared/ui/ProgressBar';
 import { useFindAnimalStore } from '../model/useFindAnimalStore';
+import Container from '../../../shared/ui/ResponsiveContainer';
 
 const buttonData = [
   { weight: '5', img: '/img/key.png', label: '열쇠 크기', alt: '열쇠' },
@@ -30,7 +31,7 @@ export default function AnimalWeight() {
   };
 
   return (
-    <>
+    <Container>
       <Progressbar number={3} />
       <div className="flex flex-col justify-center items-center pt-20 gap-4 text-black font-bold text-4xl font-[NanumSquareNeoExtraBold]">
         <span>백만장자에게 금고를 선물 받았다.</span>
@@ -74,6 +75,6 @@ export default function AnimalWeight() {
           />
         </button>
       </div>
-    </>
+    </Container>
   );
 }

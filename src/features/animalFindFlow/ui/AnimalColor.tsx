@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useFindAnimalStore } from '../model/useFindAnimalStore';
 import Progressbar from '../../../shared/ui/ProgressBar';
+import Container from '../../../shared/ui/ResponsiveContainer';
 
 const catData = [
   { color: '흰색', img: '/img/colorWhite.png', label: '흰색', alt: '흰색' },
@@ -69,7 +70,7 @@ export default function AnimalColor() {
   const isMinimumSelected = selectedColors.length >= 3;
 
   return (
-    <>
+    <Container>
       <Progressbar number={3} />
       <div className="flex flex-col justify-center items-center pt-20 gap-4 text-black font-bold text-4xl font-[NanumSquareNeoExtraBold]">
         <span>나를 위한 티셔츠를 고르고 있다.</span>
@@ -140,6 +141,6 @@ export default function AnimalColor() {
           />
         </button>
       </div>
-    </>
+    </Container>
   );
 }

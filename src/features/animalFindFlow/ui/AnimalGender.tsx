@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useFindAnimalStore } from '../model/useFindAnimalStore';
 import Progressbar from '../../../shared/ui/ProgressBar';
+import Container from '../../../shared/ui/ResponsiveContainer';
 
 const buttonData = [
   { gender: '남아', img: '/img/gold.png', label: '빛나는 황금', alt: '황금' },
@@ -28,7 +29,7 @@ export default function AnimalGender() {
   };
 
   return (
-    <>
+    <Container>
       <Progressbar number={2} />
       <div className="flex flex-col justify-center items-center pt-20 gap-4 text-black font-bold text-4xl font-[NanumSquareNeoExtraBold]">
         <span>백만장자에게 금고를 선물 받았다.</span>
@@ -72,6 +73,6 @@ export default function AnimalGender() {
           />
         </button>
       </div>
-    </>
+    </Container>
   );
 }

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useFindAnimalStore } from '../model/useFindAnimalStore';
 import Progressbar from '../../../shared/ui/ProgressBar';
+import Container from '../../../shared/ui/ResponsiveContainer';
 
 const buttonData = [
   { species: '강아지', img: '/img/dog.png', label: '강아지', alt: '강아지' },
@@ -24,7 +25,7 @@ export default function AnimalSpecies() {
   };
 
   return (
-    <>
+    <Container>
       <Progressbar number={1} />
       <div className="flex flex-col justify-center items-center pt-20 gap-4 text-black font-bold text-4xl font-[NanumSquareNeoExtraBold]">
         <span>어느 날 눈 앞에 동물이 나에게 달려온다!</span>
@@ -68,6 +69,6 @@ export default function AnimalSpecies() {
           />
         </button>
       </div>
-    </>
+    </Container>
   );
 }
