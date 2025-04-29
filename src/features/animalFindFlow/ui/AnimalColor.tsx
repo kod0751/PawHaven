@@ -49,25 +49,31 @@ const commonData = [
 
 export default function AnimalColor() {
   const { findAnimalData, updateAnimalData, nextStep } = useFindAnimalStore();
-  const [selectedColor, setSelectedColor] = useState(
-    findAnimalData.color || ''
+  const [selectedColors, setSelectedColors] = useState<string[]>(
+    findAnimalData.color || []
   );
 
   const handleColorSelect = (color: string) => {
-    setSelectedColor(color);
+    if (selectedColors.includes(color)) {
+      setSelectedColors(selectedColors.filter((c) => c !== color));
+    } else {
+      setSelectedColors([...selectedColors, color]);
+    }
   };
 
   const handleNextClick = () => {
-    updateAnimalData('color', selectedColor);
+    updateAnimalData('color', selectedColors);
     nextStep();
   };
+
+  const isMinimumSelected = selectedColors.length >= 3;
 
   return (
     <>
       <Progressbar number={3} />
       <div className="flex flex-col justify-center items-center pt-20 gap-4 text-black font-bold text-4xl font-[NanumSquareNeoExtraBold]">
-        <span>백만장자에게 금고를 선물 받았다.</span>
-        <span>금고 안에 어떤게 한가득 쌓여 있을까?</span>
+        <span>나를 위한 티셔츠를 고르고 있다.</span>
+        <span>어떤 색깔이 좋을까? 3개이상 골라보자!</span>
       </div>
 
       {findAnimalData.species === '고양이' ? (
@@ -77,7 +83,7 @@ export default function AnimalColor() {
               key={button.color}
               onClick={() => handleColorSelect(button.color)}
               className={`w-40 h-40 border-2 rounded-xl bg-inherit cursor-pointer flex flex-col justify-center items-center font-[NanumSquareNeoBold] text-lg text-black ${
-                selectedColor === button.color
+                selectedColors.includes(button.color)
                   ? 'border-orange-500 shadow-md shadow-orange-500/40 transition duration-300'
                   : 'border-gray-200'
               }`}
@@ -99,7 +105,7 @@ export default function AnimalColor() {
                 key={button.color}
                 onClick={() => handleColorSelect(button.color)}
                 className={`w-40 h-40 border-2 rounded-xl bg-inherit cursor-pointer flex flex-col justify-center items-center font-[NanumSquareNeoBold] text-lg text-black ${
-                  selectedColor === button.color
+                  selectedColors.includes(button.color)
                     ? 'border-orange-500 shadow-md shadow-orange-500/40 transition duration-300'
                     : 'border-gray-200'
                 }`}
@@ -119,9 +125,9 @@ export default function AnimalColor() {
       <div className="flex justify-center items-center my-10">
         <button
           onClick={handleNextClick}
-          disabled={!selectedColor}
+          disabled={!isMinimumSelected}
           className={`w-60 h-14 mt-8 rounded-full border-0 flex items-center justify-center font-[NanumSquareNeoExtraBold] text-xl text-white ${
-            selectedColor
+            isMinimumSelected
               ? 'bg-orange-500 cursor-pointer'
               : 'bg-gray-400 cursor-not-allowed'
           }`}
