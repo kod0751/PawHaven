@@ -11,7 +11,7 @@ export default function AnimalResult() {
   const navigate = useNavigate();
   const { isOpen, open } = useModalStore();
   const { data: allAnimals } = useAnimalList();
-  const { findAnimalData } = useFindAnimalStore();
+  const { findAnimalData, reset } = useFindAnimalStore();
   const [filteredAnimals, setFilteredAnimals] = useState<typeof allAnimals>([]);
 
   useEffect(() => {
@@ -131,7 +131,13 @@ export default function AnimalResult() {
         >
           결과 설명듣기
         </button>
-        <button className="w-56 h-12 bg-neutral-800 border-0 rounded-xl font-['NanumSquareNeoExtraBold'] text-md text-white">
+        <button
+          onClick={() => {
+            reset();
+            navigate('/find');
+          }}
+          className="w-56 h-12 bg-neutral-800 border-0 rounded-xl font-['NanumSquareNeoExtraBold'] text-md text-white"
+        >
           테스트 다시 하기
         </button>
       </div>
