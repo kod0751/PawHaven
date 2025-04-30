@@ -3,8 +3,10 @@ import Container from '../../../shared/ui/ResponsiveContainer';
 import { calculatePetAge } from '../../../shared/utils/calculatePetAge';
 import { useAnimalList } from '../../animalList/model/useAnimalList';
 import { useFindAnimalStore } from '../model/useFindAnimalStore';
+import { useNavigate } from 'react-router-dom';
 
 export default function AnimalResult() {
+  const navigate = useNavigate();
   const { data: allAnimals } = useAnimalList();
   const { findAnimalData } = useFindAnimalStore();
   const [filteredAnimals, setFilteredAnimals] = useState<typeof allAnimals>([]);
@@ -81,6 +83,10 @@ export default function AnimalResult() {
 
   const resultData = filteredAnimals?.slice(0, 3);
 
+  const goToDetail = (id: string) => {
+    navigate(`/detail/${id}`);
+  };
+
   return (
     <Container>
       <div className="flex justify-center itmes-center font-[NanumSquareNeoExtraBold] text-4xl pt-20">
@@ -105,7 +111,10 @@ export default function AnimalResult() {
               <span>{data.SPECIES_NM.replace(/\[.*?\]\s*/, '')}</span>
               <span>{calculatePetAge(data.AGE_INFO)} 살</span>
             </div>
-            <button className="bg-orange-500 w-32 h-8 font-['NanumSquareNeoExtraBold'] text-[1rem] flex items-center justify-center border-0 rounded-full text-white">
+            <button
+              onClick={() => goToDetail(data.ABDM_IDNTFY_NO)}
+              className="bg-orange-500 w-32 h-8 font-['NanumSquareNeoExtraBold'] text-[1rem] flex items-center justify-center border-0 rounded-full text-white"
+            >
               보러가기
               <img src="/img/footPrint.png" alt="발바닥" className="w-5 h-5" />
             </button>
