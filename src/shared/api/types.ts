@@ -2,6 +2,7 @@ export interface AnimalData {
   ABDM_IDNTFY_NO: string;
   IMAGE_COURS: string;
   AGE_INFO: string;
+  COLOR_NM: string;
   SPECIES_NM: string;
   SIGUN_NM: string;
   SEX_NM: 'F' | 'M' | 'Q';
