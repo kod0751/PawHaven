@@ -4,9 +4,12 @@ import { calculatePetAge } from '../../../shared/utils/calculatePetAge';
 import { useAnimalList } from '../../animalList/model/useAnimalList';
 import { useFindAnimalStore } from '../model/useFindAnimalStore';
 import { useNavigate } from 'react-router-dom';
+import { useModalStore } from '../model/useModalStore';
+import ResultModal from './ResultModal';
 
 export default function AnimalResult() {
   const navigate = useNavigate();
+  const { isOpen, open } = useModalStore();
   const { data: allAnimals } = useAnimalList();
   const { findAnimalData } = useFindAnimalStore();
   const [filteredAnimals, setFilteredAnimals] = useState<typeof allAnimals>([]);
@@ -109,7 +112,7 @@ export default function AnimalResult() {
             </div>
             <div className="w-40 flex justify-around items-center">
               <span>{data.SPECIES_NM.replace(/\[.*?\]\s*/, '')}</span>
-              <span>{calculatePetAge(data.AGE_INFO)} 살</span>
+              <span>{calculatePetAge(data.AGE_INFO)}살</span>
             </div>
             <button
               onClick={() => goToDetail(data.ABDM_IDNTFY_NO)}
@@ -122,13 +125,17 @@ export default function AnimalResult() {
         ))}
       </div>
       <div className="flex justify-center items-center pt-20 gap-12">
-        <button className="w-56 h-12 bg-white border-1 border-neutral-300 rounded-xl font-['NanumSquareNeoExtraBold'] text-md">
+        <button
+          onClick={open}
+          className="w-56 h-12 bg-white border-1 border-neutral-300 rounded-xl font-['NanumSquareNeoExtraBold'] text-md"
+        >
           결과 설명듣기
         </button>
         <button className="w-56 h-12 bg-neutral-800 border-0 rounded-xl font-['NanumSquareNeoExtraBold'] text-md text-white">
           테스트 다시 하기
         </button>
       </div>
+      {isOpen && <ResultModal />}
     </Container>
   );
 }
