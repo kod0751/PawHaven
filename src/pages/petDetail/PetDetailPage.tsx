@@ -43,7 +43,7 @@ export default function PetDetailPage() {
             <div className="flex justify-center gap-40 flex-wrap p-8">
               <div className="w-xl h-xl">
                 <img
-                  src={data.IMAGE_COURS}
+                  src={data.IMAGE_COURS || '/img/empty.png'}
                   alt="동물 이미지"
                   className="w-full aspect-square object-cover rounded-2xl"
                 />

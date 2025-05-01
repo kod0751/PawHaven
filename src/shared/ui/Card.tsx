@@ -21,7 +21,7 @@ export default function Card({ data }: CardProps) {
       <div>
         <img
           className="w-full aspect-square object-cover rounded-2xl"
-          src={data.IMAGE_COURS}
+          src={data.IMAGE_COURS || '/img/empty.png'}
           alt="동물"
           onClick={goToDetail}
         />
