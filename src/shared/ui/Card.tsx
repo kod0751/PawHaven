@@ -26,7 +26,7 @@ export default function Card({ data }: CardProps) {
           onClick={goToDetail}
         />
       </div>
-      <div className="flex justify-between">
+      <div className="flex justify-between my-1">
         <span className="font-[NanumSquareNeoHeavy] text-[1.2rem]">
           {data.SPECIES_NM.replace(/\[.*?\]\s*/, '')}
         </span>
