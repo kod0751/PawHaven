@@ -17,7 +17,7 @@ export default function Card({ data }: CardProps) {
   };
 
   return (
-    <div className="w-60 font-['NanumSquareNeoBold'] flex flex-col gap-1">
+    <div className="min-w-[180px] max-w-[240px] w-full font-['NanumSquareNeoBold'] flex flex-col gap-1">
       <div>
         <img
           className="w-full aspect-square object-cover rounded-2xl"
