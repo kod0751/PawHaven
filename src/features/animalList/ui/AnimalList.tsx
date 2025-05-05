@@ -42,7 +42,7 @@ export default function AnimalList({
         <>
           <div
             className="
-            w-full mb-12 grid grid-cols-5 gap-y-8 justify-items-center
+            w-full mb-12 grid grid-cols-5 gap-y-8 gap-x-2 justify-items-center
             max-[1400px]:grid-cols-4
             max-[1200px]:grid-cols-3
             max-[950px]:grid-cols-2
