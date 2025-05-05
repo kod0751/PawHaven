@@ -41,10 +41,10 @@ export default function Carousel() {
           slidesPerView={5}
           loop={true}
           breakpoints={{
-            640: { slidesPerView: 2 },
-            768: { slidesPerView: 3 },
-            1024: { slidesPerView: 4 },
-            1280: { slidesPerView: 5 },
+            500: { slidesPerView: 2 },
+            950: { slidesPerView: 3 },
+            1200: { slidesPerView: 4 },
+            1400: { slidesPerView: 5 },
           }}
           className="w-full"
         >
