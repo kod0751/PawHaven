@@ -2,7 +2,7 @@ import Container from '../../../shared/ui/ResponsiveContainer';
 
 export default function HomeBanner() {
   return (
-    <Container className="flex justify-between items-center gap-10 py-8">
+    <Container className="flex justify-center items-center gap-10 py-8 xl:justify-between">
       <div className="flex flex-col gap-1">
         <span className="font-['NanumSquareNeoExtraBold'] text-5xl mb-4">
           버려진 아이들과
@@ -23,7 +23,11 @@ export default function HomeBanner() {
           <img src="/img/footPrint.png" alt="발바닥" className="w-8 h-8" />
         </button>
       </div>
-      <img src="/img/banner.png" alt="배너" className="w-lg h-auto" />
+      <img
+        src="/img/banner.png"
+        alt="배너"
+        className="w-lg h-auto hidden xl:block"
+      />
     </Container>
   );
 }
