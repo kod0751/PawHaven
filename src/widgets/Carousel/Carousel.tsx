@@ -38,7 +38,7 @@ export default function Carousel() {
           }}
           spaceBetween={10}
           modules={[Navigation]}
-          slidesPerView={5}
+          slidesPerView={1}
           loop={true}
           breakpoints={{
             500: { slidesPerView: 2 },
@@ -59,7 +59,7 @@ export default function Carousel() {
 
         <button
           ref={prevRef}
-          className="absolute top-1/2 -left-15 -translate-y-1/2 z-10"
+          className="absolute top-1/2 -left-5 -translate-y-1/2 z-10 md:-left-10 xl:-left-15"
           aria-label="이전 슬라이드"
         >
           <ChevronLeft
@@ -70,7 +70,7 @@ export default function Carousel() {
 
         <button
           ref={nextRef}
-          className="absolute top-1/2 -right-15 -translate-y-1/2 z-10"
+          className="absolute top-1/2 -right-5 -translate-y-1/2 z-10 md:-right-10 xl:-right-15"
           aria-label="다음 슬라이드"
         >
           <ChevronRight
