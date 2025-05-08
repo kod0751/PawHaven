@@ -172,7 +172,7 @@ export default function Graph() {
 
   return (
     <Container className="py-8">
-      <div className="flex flex-col font-[NanumSquareNeoExtraBold] text-4xl gap-1">
+      <div className="flex flex-col font-[NanumSquareNeoExtraBold] text-3xl gap-1 lg:text-4xl">
         <div>경기도</div>
         <div>
           <span className="text-orange-500">유기동물</span> 현황
