@@ -20,7 +20,7 @@ export default function Carousel() {
 
   return (
     <Container className="justify-between items-center py-8 relative">
-      <div className="font-['NanumSquareNeoExtraBold'] text-4xl my-8">
+      <div className="font-['NanumSquareNeoExtraBold'] text-3xl my-8 lg:text-5xl">
         공고기간이 하루 남은 친구들이에요!
       </div>
 
