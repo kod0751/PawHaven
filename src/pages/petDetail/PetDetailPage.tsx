@@ -27,20 +27,20 @@ export default function PetDetailPage() {
       {data ? (
         <Container className="py-8">
           <div>
-            <div className="text-4xl font-[NanumSquareNeoExtraBold] text-black my-8 flex items-center">
+            <div className="text-xl font-[NanumSquareNeoExtraBold] text-black flex items-center lg:text-2xl xl:my-8 xl:text-4xl">
               <button onClick={toggleBookmark} className="focus:outline-none">
                 <Bookmark
                   fill={isBookmarked ? '#F97316' : 'none'}
-                  size={40}
+                  className="w-6 h-6 sm:w-7 sm:h-7 lg:w-9 lg:h-9 xl:w-10 xl:h-10"
                   color="#F97316"
                 />
               </button>
-              <span className=" text-orange-500 px-3 py-1 rounded-full mr-2">
+              <span className=" text-orange-500 px-1 py-1 rounded-full mr-2">
                 공고번호
               </span>
               {data.PBLANC_IDNTFY_NO}
             </div>
-            <div className="flex justify-center gap-40 flex-wrap p-8">
+            <div className="flex justify-center flex-wrap gap-10 p-8 xl:flex-nowrap xl:gap-40">
               <div className="w-xl h-xl">
                 <img
                   src={data.IMAGE_COURS || '/img/empty.png'}
@@ -84,8 +84,8 @@ export default function PetDetailPage() {
               </div>
             </div>
             <div>
-              <div className="text-4xl font-[NanumSquareNeoExtraBold] text-black my-8">
-                <span className=" text-orange-500 px-3 py-1 rounded-full mr-2">
+              <div className="text-2xl font-[NanumSquareNeoExtraBold] text-black my-4 xl:my-8 xl:text-4xl">
+                <span className=" text-orange-500 py-1 rounded-full">
                   {data.SHTER_NM}
                 </span>
                 에서 기다리고 있어요
