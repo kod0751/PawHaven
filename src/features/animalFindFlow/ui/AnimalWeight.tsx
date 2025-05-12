@@ -34,8 +34,8 @@ export default function AnimalWeight() {
     <Container>
       <Progressbar number={3} />
       <div className="flex flex-col justify-center items-center pt-20 gap-4 text-black font-bold text-4xl font-[NanumSquareNeoExtraBold]">
-        <span>백만장자에게 금고를 선물 받았다.</span>
-        <span>금고 안에 어떤게 한가득 쌓여 있을까?</span>
+        <span>이상한 나라로 가는 문이 눈 앞에 있다.</span>
+        <span>이 문의 크기는 얼마날까?</span>
       </div>
       <div className="flex justify-center items-center mt-20 gap-16">
         {buttonData.map((button) => (
