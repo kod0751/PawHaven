@@ -71,7 +71,7 @@ export default function AnimalColor() {
 
   return (
     <Container>
-      <Progressbar number={3} />
+      <Progressbar number={4} />
       <div className="flex flex-col justify-center items-center pt-20 gap-4 text-black font-bold text-4xl font-[NanumSquareNeoExtraBold]">
         <span>나를 위한 티셔츠를 고르고 있다.</span>
         <span>어떤 색깔이 좋을까? 3개이상 골라보자!</span>
