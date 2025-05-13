@@ -72,28 +72,28 @@ export default function AnimalColor() {
   return (
     <Container>
       <Progressbar number={4} />
-      <div className="flex flex-col justify-center items-center pt-20 gap-4 text-black font-bold text-4xl font-[NanumSquareNeoExtraBold]">
+      <div className="flex flex-col justify-center items-center pt-20 gap-4 text-black font-bold text-xl font-[NanumSquareNeoExtraBold] lg:text-4xl">
         <span>나를 위한 티셔츠를 고르고 있다.</span>
         <span>어떤 색깔이 좋을까? 3개이상 골라보자!</span>
       </div>
 
       {findAnimalData.species === '고양이' ? (
         <div className="flex flex-col items-center mt-20 px-4 max-w-4xl mx-auto">
-          <div className="grid grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
             {catData.map((button) => (
               <button
                 key={button.color}
                 onClick={() => handleColorSelect(button.color)}
-                className={`w-40 h-40 border-2 rounded-xl bg-inherit cursor-pointer flex flex-col justify-center items-center font-[NanumSquareNeoBold] text-lg text-black ${
+                className={`w-25 h-25 border-2 rounded-xl bg-inherit cursor-pointer flex flex-col justify-center items-center font-[NanumSquareNeoBold] text-lg text-black ${
                   selectedColors.includes(button.color)
                     ? 'border-orange-500 shadow-md shadow-orange-500/40 transition duration-300'
                     : 'border-gray-200'
-                }`}
+                } lg:w-40 lg:h-40`}
               >
                 <img
                   src={button.img}
                   alt={button.alt}
-                  className="mb-4 w-20 h-20 object-contain"
+                  className="w-11 h-11 object-contain lg:w-20 lg:h-20 lg:mb-4"
                 />
                 {button.label}
               </button>
@@ -102,21 +102,21 @@ export default function AnimalColor() {
         </div>
       ) : (
         <div className="flex flex-col items-center mt-20 px-4 max-w-4xl mx-auto">
-          <div className="grid grid-cols-3 gap-6 mb-6">
+          <div className="grid grid-cols-2 gap-6 lg:grid-cols-3">
             {commonData.map((button) => (
               <button
                 key={button.color}
                 onClick={() => handleColorSelect(button.color)}
-                className={`w-40 h-40 border-2 rounded-xl bg-inherit cursor-pointer flex flex-col justify-center items-center font-[NanumSquareNeoBold] text-lg text-black ${
+                className={`w-25 h-25 border-2 rounded-xl bg-inherit cursor-pointer flex flex-col justify-center items-center font-[NanumSquareNeoBold] text-lg text-black ${
                   selectedColors.includes(button.color)
                     ? 'border-orange-500 shadow-md shadow-orange-500/40 transition duration-300'
                     : 'border-gray-200'
-                }`}
+                } lg:w-40 lg:h-40`}
               >
                 <img
                   src={button.img}
                   alt={button.alt}
-                  className="mb-4 w-20 h-20 object-contain"
+                  className="w-11 h-11 object-contain lg:w-20 lg:h-20 lg:mb-4"
                 />
                 {button.label}
               </button>

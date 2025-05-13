@@ -33,25 +33,25 @@ export default function AnimalWeight() {
   return (
     <Container>
       <Progressbar number={3} />
-      <div className="flex flex-col justify-center items-center pt-20 gap-4 text-black font-bold text-4xl font-[NanumSquareNeoExtraBold]">
+      <div className="flex flex-col justify-center items-center pt-20 gap-4 text-black font-bold text-xl font-[NanumSquareNeoExtraBold] lg:text-4xl">
         <span>이상한 나라로 가는 문이 눈 앞에 있다.</span>
         <span>이 문의 크기는 얼마날까?</span>
       </div>
-      <div className="flex justify-center items-center mt-20 gap-16">
+      <div className="grid grid-cols-2 place-items-center mt-20 gap-4 lg:flex lg:justify-center lg:items-center lg:gap-12">
         {buttonData.map((button) => (
           <button
             key={button.weight}
             onClick={() => handleWeightSelect(button.weight)}
-            className={`w-40 h-40 border-2 rounded-xl bg-inherit cursor-pointer flex flex-col justify-center items-center font-[NanumSquareNeoBold] text-lg text-black ${
+            className={`w-25 h-25 border-2 rounded-xl bg-inherit cursor-pointer flex flex-col justify-center items-center font-[NanumSquareNeoBold] text-lg text-black ${
               selectedWeight === button.weight
                 ? 'border-orange-500 shadow-md shadow-orange-500/40 transition duration-300'
                 : 'border-gray-200'
-            }`}
+            } lg:w-40 lg:h-40`}
           >
             <img
               src={button.img}
               alt={button.alt}
-              className="mb-4 w-20 h-20 object-contain"
+              className="w-15 h-15 object-contain lg:w-24 lg:h-24 lg:mb-4"
             />
             {button.label}
           </button>

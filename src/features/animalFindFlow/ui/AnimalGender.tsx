@@ -31,25 +31,25 @@ export default function AnimalGender() {
   return (
     <Container>
       <Progressbar number={2} />
-      <div className="flex flex-col justify-center items-center pt-20 gap-4 text-black font-bold text-4xl font-[NanumSquareNeoExtraBold]">
+      <div className="flex flex-col justify-center items-center pt-20 gap-4 text-black font-bold text-xl font-[NanumSquareNeoExtraBold] lg:text-4xl">
         <span>백만장자에게 금고를 선물 받았다.</span>
         <span>금고 안에 어떤게 한가득 쌓여 있을까?</span>
       </div>
-      <div className="flex justify-center items-center mt-20 gap-16">
+      <div className="flex justify-center items-center mt-20 gap-4 lg:gap-12">
         {buttonData.map((button) => (
           <button
             key={button.gender}
             onClick={() => handleGenderSelect(button.gender)}
-            className={`w-40 h-40 border-2 rounded-xl bg-inherit cursor-pointer flex flex-col justify-center items-center font-[NanumSquareNeoBold] text-lg text-black ${
+            className={`w-25 h-25 border-2 rounded-xl bg-inherit cursor-pointer flex flex-col justify-center items-center font-[NanumSquareNeoBold] text-lg text-black ${
               selectedGender === button.gender
                 ? 'border-orange-500 shadow-md shadow-orange-500/40 transition duration-300'
                 : 'border-gray-200'
-            }`}
+            } lg:w-40 lg:h-40`}
           >
             <img
               src={button.img}
               alt={button.alt}
-              className="mb-4 w-20 h-20 object-contain"
+              className="w-15 h-15 object-contain lg:w-24 lg:h-24 lg:mb-4"
             />
             {button.label}
           </button>
