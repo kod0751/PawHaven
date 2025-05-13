@@ -78,25 +78,27 @@ export default function AnimalColor() {
       </div>
 
       {findAnimalData.species === '고양이' ? (
-        <div className="grid grid-cols-4 gap-6 mt-20 px-4 max-w-4xl mx-auto">
-          {catData.map((button) => (
-            <button
-              key={button.color}
-              onClick={() => handleColorSelect(button.color)}
-              className={`w-40 h-40 border-2 rounded-xl bg-inherit cursor-pointer flex flex-col justify-center items-center font-[NanumSquareNeoBold] text-lg text-black ${
-                selectedColors.includes(button.color)
-                  ? 'border-orange-500 shadow-md shadow-orange-500/40 transition duration-300'
-                  : 'border-gray-200'
-              }`}
-            >
-              <img
-                src={button.img}
-                alt={button.alt}
-                className="mb-4 w-20 h-20 object-contain"
-              />
-              {button.label}
-            </button>
-          ))}
+        <div className="flex flex-col items-center mt-20 px-4 max-w-4xl mx-auto">
+          <div className="grid grid-cols-4 gap-6">
+            {catData.map((button) => (
+              <button
+                key={button.color}
+                onClick={() => handleColorSelect(button.color)}
+                className={`w-40 h-40 border-2 rounded-xl bg-inherit cursor-pointer flex flex-col justify-center items-center font-[NanumSquareNeoBold] text-lg text-black ${
+                  selectedColors.includes(button.color)
+                    ? 'border-orange-500 shadow-md shadow-orange-500/40 transition duration-300'
+                    : 'border-gray-200'
+                }`}
+              >
+                <img
+                  src={button.img}
+                  alt={button.alt}
+                  className="mb-4 w-20 h-20 object-contain"
+                />
+                {button.label}
+              </button>
+            ))}
+          </div>
         </div>
       ) : (
         <div className="flex flex-col items-center mt-20 px-4 max-w-4xl mx-auto">
