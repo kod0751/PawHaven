@@ -92,14 +92,14 @@ export default function AnimalResult() {
 
   return (
     <Container>
-      <div className="flex justify-center itmes-center font-[NanumSquareNeoExtraBold] text-4xl pt-20">
+      <div className="flex justify-center itmes-center font-[NanumSquareNeoExtraBold] text-2xl pt-20 lg:text-4xl">
         당신의 운명의 반려동물을 찾았어요!
       </div>
-      <div className="w-4/5 pt-32 flex justify-center items-center gap-8 mx-auto font-['NanumSquareNeoExtraBold'] text-xl text-black">
+      <div className="w-4/5 pt-16 lg:pt-32 flex flex-col lg:flex-row justify-center items-center gap-8 mx-auto font-['NanumSquareNeoExtraBold'] text-xl text-black">
         {resultData?.map((data, index) => (
           <div
             className={`flex flex-col justify-center items-center gap-6 ${
-              index === 1 ? '-translate-y-12' : ''
+              index === 1 ? 'lg:-translate-y-12' : ''
             }`}
             key={index}
           >
@@ -124,7 +124,7 @@ export default function AnimalResult() {
           </div>
         ))}
       </div>
-      <div className="flex justify-center items-center pt-20 gap-12">
+      <div className="flex justify-center items-center py-12 gap-4 lg:gap-12 lg:py-20">
         <button
           onClick={open}
           className="w-56 h-12 bg-white border-1 border-neutral-300 rounded-xl font-['NanumSquareNeoExtraBold'] text-md"
