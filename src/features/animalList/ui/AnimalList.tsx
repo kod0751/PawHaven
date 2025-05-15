@@ -4,6 +4,7 @@ import Container from '../../../shared/ui/ResponsiveContainer';
 import { useEffect, useState } from 'react';
 import { AnimalListProps } from '../model/types';
 import { titleByPage } from '../../../shared/utils/titleByPage';
+import Empty from '../../../shared/ui/Empty';
 
 export default function AnimalList({
   animals,
@@ -55,10 +56,7 @@ export default function AnimalList({
                 <Card key={index} data={animal}></Card>
               ))
             ) : (
-              <div className="col-span-full text-center text-gray-500 my-30 font-['NanumSquareNeo']">
-                <img src="/img/banner.png" alt="배너" className="w-lg h-auto" />
-                조건에 맞는 친구들이 없습니다.
-              </div>
+              <Empty />
             )}
           </div>
 

@@ -6,13 +6,15 @@ import { useFindAnimalStore } from '../model/useFindAnimalStore';
 import { useNavigate } from 'react-router-dom';
 import { useModalStore } from '../model/useModalStore';
 import ResultModal from './ResultModal';
+import Empty from '../../../shared/ui/Empty';
+import { AnimalData } from '../../../shared/api/types';
 
 export default function AnimalResult() {
   const navigate = useNavigate();
   const { isOpen, open } = useModalStore();
-  const { data: allAnimals } = useAnimalList();
+  const { data: allAnimals, isLoading } = useAnimalList();
   const { findAnimalData, reset } = useFindAnimalStore();
-  const [filteredAnimals, setFilteredAnimals] = useState<typeof allAnimals>([]);
+  const [filteredAnimals, setFilteredAnimals] = useState<AnimalData[]>([]);
 
   useEffect(() => {
     if (!allAnimals?.length) return;
@@ -90,57 +92,75 @@ export default function AnimalResult() {
     navigate(`/detail/${id}`);
   };
 
+  if (isLoading) {
+    return (
+      <Container>
+        <div className="text-center py-20">로딩 중...</div>
+      </Container>
+    );
+  }
+
   return (
     <Container>
-      <div className="flex justify-center itmes-center font-[NanumSquareNeoExtraBold] text-2xl pt-20 lg:text-4xl">
-        당신의 운명의 반려동물을 찾았어요!
-      </div>
-      <div className="w-4/5 pt-16 lg:pt-32 flex flex-col lg:flex-row justify-center items-center gap-8 mx-auto font-['NanumSquareNeoExtraBold'] text-xl text-black">
-        {resultData?.map((data, index) => (
-          <div
-            className={`flex flex-col justify-center items-center gap-6 ${
-              index === 1 ? 'lg:-translate-y-12' : ''
-            }`}
-            key={index}
-          >
-            <div className="w-40 h-40 rounded-full border-4 border-orange-500 overflow-hidden">
-              <img
-                src={data.IMAGE_COURS}
-                alt="이미지"
-                className="w-40 aspect-square object-cover"
-              />
-            </div>
-            <div className="w-40 flex justify-around items-center">
-              <span>{data.SPECIES_NM.replace(/\[.*?\]\s*/, '')}</span>
-              <span>{calculatePetAge(data.AGE_INFO)}살</span>
-            </div>
+      {filteredAnimals.length < 3 ? (
+        <Empty />
+      ) : (
+        <>
+          <div className="flex justify-center itmes-center font-[NanumSquareNeoExtraBold] text-2xl pt-20 lg:text-4xl">
+            당신의 운명의 반려동물을 찾았어요!
+          </div>
+          <div className="w-4/5 pt-16 lg:pt-32 flex flex-col lg:flex-row justify-center items-center gap-8 mx-auto font-['NanumSquareNeoExtraBold'] text-xl text-black">
+            {resultData?.map((data, index) => (
+              <div
+                className={`flex flex-col justify-center items-center gap-6 ${
+                  index === 1 ? 'lg:-translate-y-12' : ''
+                }`}
+                key={index}
+              >
+                <div className="w-40 h-40 rounded-full border-4 border-orange-500 overflow-hidden">
+                  <img
+                    src={data.IMAGE_COURS}
+                    alt="이미지"
+                    className="w-40 aspect-square object-cover"
+                  />
+                </div>
+                <div className="w-40 flex justify-around items-center">
+                  <span>{data.SPECIES_NM.replace(/\[.*?\]\s*/, '')}</span>
+                  <span>{calculatePetAge(data.AGE_INFO)}살</span>
+                </div>
+                <button
+                  onClick={() => goToDetail(data.ABDM_IDNTFY_NO)}
+                  className="bg-orange-500 w-32 h-8 font-['NanumSquareNeoExtraBold'] text-[1rem] flex items-center justify-center border-0 rounded-full text-white"
+                >
+                  보러가기
+                  <img
+                    src="/img/footPrint.png"
+                    alt="발바닥"
+                    className="w-5 h-5"
+                  />
+                </button>
+              </div>
+            ))}
+          </div>
+          <div className="flex justify-center items-center py-12 gap-4 lg:gap-12 lg:py-20">
             <button
-              onClick={() => goToDetail(data.ABDM_IDNTFY_NO)}
-              className="bg-orange-500 w-32 h-8 font-['NanumSquareNeoExtraBold'] text-[1rem] flex items-center justify-center border-0 rounded-full text-white"
+              onClick={open}
+              className="w-56 h-12 bg-white border-1 border-neutral-300 rounded-xl font-['NanumSquareNeoExtraBold'] text-md"
             >
-              보러가기
-              <img src="/img/footPrint.png" alt="발바닥" className="w-5 h-5" />
+              결과 설명듣기
+            </button>
+            <button
+              onClick={() => {
+                reset();
+                navigate('/find');
+              }}
+              className="w-56 h-12 bg-neutral-800 border-0 rounded-xl font-['NanumSquareNeoExtraBold'] text-md text-white"
+            >
+              테스트 다시 하기
             </button>
           </div>
-        ))}
-      </div>
-      <div className="flex justify-center items-center py-12 gap-4 lg:gap-12 lg:py-20">
-        <button
-          onClick={open}
-          className="w-56 h-12 bg-white border-1 border-neutral-300 rounded-xl font-['NanumSquareNeoExtraBold'] text-md"
-        >
-          결과 설명듣기
-        </button>
-        <button
-          onClick={() => {
-            reset();
-            navigate('/find');
-          }}
-          className="w-56 h-12 bg-neutral-800 border-0 rounded-xl font-['NanumSquareNeoExtraBold'] text-md text-white"
-        >
-          테스트 다시 하기
-        </button>
-      </div>
+        </>
+      )}
       {isOpen && <ResultModal />}
     </Container>
   );
