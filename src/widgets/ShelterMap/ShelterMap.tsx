@@ -110,7 +110,7 @@ export default function ShelterMap({
 
   return (
     <Container className="py-8">
-      <div className="font-['NanumSquareNeoExtraBold'] text-4xl my-8">
+      <div className="font-['NanumSquareNeoExtraBold'] text-3xl my-8 lg:4xl">
         나와 가까운 보호소를 클릭해 보세요!
       </div>
       <Map
