@@ -4,13 +4,20 @@ import { useGetDetail } from '../../shared/api/useGetDetail';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 import { useBookmark } from '../../shared/lib/hooks/useBookmark';
 import { Bookmark } from 'lucide-react';
+import Loading from '../../shared/ui/Loading';
 
 export default function PetDetailPage() {
   const { id } = useParams();
   const { data, isLoading } = useGetDetail(id);
   const { isBookmarked, toggleBookmark } = useBookmark(data);
 
-  if (isLoading) return <div className="text-center mt-10">로딩 중...</div>;
+  if (isLoading)
+    return (
+      <div className="mt-10">
+        <Loading />
+      </div>
+    );
+
   if (!data)
     return <div className="text-center mt-10">존재하지 않는 동물입니다.</div>;
 

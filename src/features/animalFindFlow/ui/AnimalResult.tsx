@@ -8,6 +8,7 @@ import { useModalStore } from '../model/useModalStore';
 import ResultModal from './ResultModal';
 import Empty from '../../../shared/ui/Empty';
 import { AnimalData } from '../../../shared/api/types';
+import Loading from '../../../shared/ui/Loading';
 
 export default function AnimalResult() {
   const navigate = useNavigate();
@@ -95,7 +96,9 @@ export default function AnimalResult() {
   if (isLoading) {
     return (
       <Container>
-        <div className="text-center py-20">로딩 중...</div>
+        <div className="text-center py-20">
+          <Loading />
+        </div>
       </Container>
     );
   }

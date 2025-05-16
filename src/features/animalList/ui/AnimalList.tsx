@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { AnimalListProps } from '../model/types';
 import { titleByPage } from '../../../shared/utils/titleByPage';
 import Empty from '../../../shared/ui/Empty';
+import Loading from '../../../shared/ui/Loading';
 
 export default function AnimalList({
   animals,
@@ -38,7 +39,9 @@ export default function AnimalList({
       </div>
 
       {isLoading ? (
-        <div className="text-center py-16">로딩 중...</div>
+        <div className="text-center py-16">
+          <Loading />
+        </div>
       ) : (
         <>
           <div
