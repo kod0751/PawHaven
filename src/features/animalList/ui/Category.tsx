@@ -77,7 +77,7 @@ export default function CategoryFilter({
 
   return (
     <Container className="pt-8">
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2 justify-center items-center lg:justify-start">
         {categories.map((category) => (
           <div key={category.id} className="relative inline-block">
             <button
