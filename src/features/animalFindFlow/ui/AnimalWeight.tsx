@@ -37,25 +37,27 @@ export default function AnimalWeight() {
         <span>이상한 나라로 가는 문이 눈 앞에 있다.</span>
         <span>이 문의 크기는 얼마날까?</span>
       </div>
-      <div className="grid grid-cols-2 place-items-center mt-20 gap-4 lg:flex lg:justify-center lg:items-center lg:gap-12">
-        {buttonData.map((button) => (
-          <button
-            key={button.weight}
-            onClick={() => handleWeightSelect(button.weight)}
-            className={`w-25 h-25 border-2 rounded-xl bg-inherit cursor-pointer flex flex-col justify-center items-center font-[NanumSquareNeoBold] text-lg text-black ${
-              selectedWeight === button.weight
-                ? 'border-orange-500 shadow-md shadow-orange-500/40 transition duration-300'
-                : 'border-gray-200'
-            } lg:w-40 lg:h-40`}
-          >
-            <img
-              src={button.img}
-              alt={button.alt}
-              className="w-15 h-15 object-contain lg:w-24 lg:h-24 lg:mb-4"
-            />
-            {button.label}
-          </button>
-        ))}
+      <div className="flex flex-col items-center mt-20 px-4 max-w-4xl mx-auto">
+        <div className="grid grid-cols-2 gap-4 lg:flex lg:justify-center lg:items-center lg:gap-12">
+          {buttonData.map((button) => (
+            <button
+              key={button.weight}
+              onClick={() => handleWeightSelect(button.weight)}
+              className={`w-25 h-25 border-2 rounded-xl bg-inherit cursor-pointer flex flex-col justify-center items-center font-[NanumSquareNeoBold] text-lg text-black ${
+                selectedWeight === button.weight
+                  ? 'border-orange-500 shadow-md shadow-orange-500/40 transition duration-300'
+                  : 'border-gray-200'
+              } lg:w-40 lg:h-40`}
+            >
+              <img
+                src={button.img}
+                alt={button.alt}
+                className="w-15 h-15 object-contain lg:w-24 lg:h-24 lg:mb-4"
+              />
+              {button.label}
+            </button>
+          ))}
+        </div>
       </div>
       <div className="flex justify-center items-center mt-20">
         <button
