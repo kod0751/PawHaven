@@ -13,8 +13,6 @@ export default function Carousel() {
   const tomorrowDate = getTomorrowDateString();
   const { data } = useOneDayList(tomorrowDate);
 
-  console.log(data);
-
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
