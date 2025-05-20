@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Container from '../../../shared/ui/ResponsiveContainer';
 import { Menu, X } from 'lucide-react';
@@ -7,25 +7,9 @@ export default function Header() {
   const location = useLocation();
   const currentPath = location.pathname;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkScreenSize = () => {
-      setIsMobile(window.innerWidth < 768);
-      if (window.innerWidth >= 768) {
-        setIsMenuOpen(false);
-      }
-    };
-
-    checkScreenSize();
-    window.addEventListener('resize', checkScreenSize);
-    return () => window.removeEventListener('resize', checkScreenSize);
-  }, []);
 
   const handleLinkClick = () => {
-    if (isMobile) {
-      setIsMenuOpen(false);
-    }
+    setIsMenuOpen(false);
   };
 
   return (
@@ -43,6 +27,7 @@ export default function Header() {
           </div>
         </Link>
 
+        {/* 데스크탑 메뉴 */}
         <ul className="hidden md:flex gap-8 font-['NanumSquareNeoExtraBold']">
           <Link to="/list">
             <li
@@ -90,6 +75,7 @@ export default function Header() {
           </Link>
         </ul>
 
+        {/* 모바일 메뉴 버튼 */}
         <button
           className="md:hidden z-50"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
