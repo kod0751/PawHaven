@@ -4,7 +4,7 @@ export default function HomeBanner() {
   return (
     <Container className="flex justify-center items-center gap-10 py-8 xl:justify-between">
       <div className="flex flex-col gap-1">
-        <span className="font-['NanumSquareNeoExtraBold'] text-3xl mb-4 lg:text-5xl">
+        <span className="font-['NanumSquareNeoExtraBold'] text-3xl lg:mb-4 lg:text-5xl">
           버려진 아이들과
         </span>
         <span className="font-['NanumSquareNeoExtraBold'] text-3xl mb-4 lg:text-5xl">
