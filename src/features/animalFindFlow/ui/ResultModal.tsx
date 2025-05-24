@@ -13,8 +13,8 @@ export default function ResultModal() {
   const close = useModalStore((state) => state.close);
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
-      <div className="relative w-120 bg-gray-50 p-4 rounded-2xl flex flex-col gap-4">
+    <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50 p-4">
+      <div className="relative w-full max-w-[480px] bg-gray-50 p-4 rounded-2xl flex flex-col gap-4 mx-auto">
         <button
           onClick={close}
           className="w-full h-8 flex justify-end items-center cursor-pointer border-none bg-transparent"
