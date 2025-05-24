@@ -14,7 +14,7 @@ export default function ResultModal() {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
-      <div className="relative w-120 h-120 bg-gray-50 p-4 rounded-2xl flex flex-col gap-4">
+      <div className="relative w-120 bg-gray-50 p-4 rounded-2xl flex flex-col gap-4">
         <button
           onClick={close}
           className="w-full h-8 flex justify-end items-center cursor-pointer border-none bg-transparent"
