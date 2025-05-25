@@ -14,7 +14,8 @@ const buttonData = [
 ];
 
 export default function AnimalGender() {
-  const { findAnimalData, updateAnimalData, nextStep } = useFindAnimalStore();
+  const { findAnimalData, updateAnimalData, nextStep, prevStep } =
+    useFindAnimalStore();
   const [selectedGender, setSelectedGender] = useState(
     findAnimalData.gender || ''
   );
@@ -26,6 +27,10 @@ export default function AnimalGender() {
   const handleNextClick = () => {
     updateAnimalData('gender', selectedGender);
     nextStep();
+  };
+
+  const handlePrevClick = () => {
+    prevStep();
   };
 
   return (
@@ -55,14 +60,26 @@ export default function AnimalGender() {
           </button>
         ))}
       </div>
-      <div className="flex justify-center items-center mt-20">
+      <div className="flex justify-center items-center mt-20 gap-4">
+        <button
+          onClick={handlePrevClick}
+          className="w-60 h-14 mt-2 rounded-full bg-orange-500 flex items-center justify-center font-[NanumSquareNeoExtraBold] text-xl text-white cursor-pointer"
+        >
+          이전
+          <img
+            src="/img/footPrint.png"
+            alt="이전"
+            className="w-8 h-8 ml-2 align-middle"
+          />
+        </button>
+
         <button
           onClick={handleNextClick}
           disabled={!selectedGender}
-          className={`w-60 h-14 mt-2 rounded-full border-0 flex items-center justify-center font-[NanumSquareNeoExtraBold] text-xl text-white ${
+          className={`w-60 h-14 mt-2 rounded-full flex items-center justify-center font-[NanumSquareNeoExtraBold] text-xl text-white transition ${
             selectedGender
               ? 'bg-orange-500 cursor-pointer'
-              : 'bg-gray-400 cursor-not-allowed'
+              : 'bg-gray-200 cursor-not-allowed'
           }`}
         >
           다음

@@ -58,7 +58,7 @@ export default function AnimalSpecies() {
           className={`w-60 h-14 mt-2 rounded-full border-0 flex items-center justify-center font-[NanumSquareNeoExtraBold] text-xl text-white ${
             selectedSpecies
               ? 'bg-orange-500 cursor-pointer'
-              : 'bg-gray-400 cursor-not-allowed'
+              : 'bg-gray-200 cursor-not-allowed'
           }`}
         >
           다음

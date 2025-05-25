@@ -49,7 +49,8 @@ const commonData = [
 ];
 
 export default function AnimalColor() {
-  const { findAnimalData, updateAnimalData, nextStep } = useFindAnimalStore();
+  const { findAnimalData, updateAnimalData, nextStep, prevStep } =
+    useFindAnimalStore();
   const [selectedColors, setSelectedColors] = useState<string[]>(
     findAnimalData.color || []
   );
@@ -65,6 +66,10 @@ export default function AnimalColor() {
   const handleNextClick = () => {
     updateAnimalData('color', selectedColors);
     nextStep();
+  };
+
+  const handlePrevClick = () => {
+    prevStep();
   };
 
   const isMinimumSelected = selectedColors.length >= 3;
@@ -125,14 +130,26 @@ export default function AnimalColor() {
         </div>
       )}
 
-      <div className="flex justify-center items-center my-10">
+      <div className="flex justify-center items-center my-10 gap-4">
+        <button
+          onClick={handlePrevClick}
+          className="w-60 h-14 mt-2 rounded-full bg-orange-500 flex items-center justify-center font-[NanumSquareNeoExtraBold] text-xl text-white cursor-pointer"
+        >
+          이전
+          <img
+            src="/img/footPrint.png"
+            alt="이전"
+            className="w-8 h-8 ml-2 align-middle"
+          />
+        </button>
+
         <button
           onClick={handleNextClick}
           disabled={!isMinimumSelected}
-          className={`w-60 h-14 mt-2 rounded-full border-0 flex items-center justify-center font-[NanumSquareNeoExtraBold] text-xl text-white ${
+          className={`w-60 h-14 mt-2 rounded-full border-0 flex items-center justify-center font-[NanumSquareNeoExtraBold] text-xl text-white transition ${
             isMinimumSelected
               ? 'bg-orange-500 cursor-pointer'
-              : 'bg-gray-400 cursor-not-allowed'
+              : 'bg-gray-200 cursor-not-allowed'
           }`}
         >
           다음
