@@ -7,6 +7,7 @@ import AnimalByShelterPage from './pages/animalByShelter/AnimalByShelterPage';
 import LikedAnimalPage from './pages/likedAnimal/LikedAnimalPage';
 import PetDetailPage from './pages/petDetail/PetDetailPage';
 import AnimalFindPage from './pages/AnimalFind/AnimalFindPage';
+import ScrollToTopButton from './shared/ui/ScrollToTopButton';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/liked" element={<LikedAnimalPage />} />
         <Route path="/detail/:id" element={<PetDetailPage />} />
       </Routes>
+      <ScrollToTopButton />
     </BrowserRouter>
   );
 }
