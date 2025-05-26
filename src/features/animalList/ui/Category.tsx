@@ -85,7 +85,7 @@ export default function CategoryFilter({
               className="flex items-center justify-between gap-2 px-4 py-2 bg-white border border-gray-300 rounded-full text-gray-700 hover:bg-gray-50 focus:outline-none font-[NanumSquareNeoBold]"
             >
               <span>{category.label}</span>
-              <span className="text-sm text-gray-500">
+              <span className="text-sm text-orange-500">
                 {filters[category.id as keyof FilterOptions] ?? ''}
               </span>
               <ChevronDown className="w-4 h-4" />
@@ -98,7 +98,7 @@ export default function CategoryFilter({
                     key={option}
                     className={`block w-full text-left px-4 py-2 text-sm ${
                       option === filters[category.id as keyof FilterOptions]
-                        ? 'text-orange-500 font-medium'
+                        ? 'text-orange-500'
                         : 'text-gray-700 hover:bg-gray-100'
                     }`}
                     onClick={() => selectOption(category.id, option)}
