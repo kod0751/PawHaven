@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Container from '../../../shared/ui/ResponsiveContainer';
 
 export default function HomeBanner() {
@@ -18,10 +19,12 @@ export default function HomeBanner() {
           유기동물 입양으로 가족이 되어주세요.
         </p>
 
-        <button className="bg-orange-500 w-58 h-13 mt-8 font-['NanumSquareNeoExtraBold'] text-[1rem] flex items-center justify-center border-0 rounded-full text-white">
-          나의 반려동물 찾기
-          <img src="/img/footPrint.png" alt="발바닥" className="w-8 h-8" />
-        </button>
+        <Link to="/find">
+          <button className="bg-orange-500 w-58 h-13 mt-8 font-['NanumSquareNeoExtraBold'] text-[1rem] flex items-center justify-center border-0 rounded-full text-white">
+            나의 반려동물 찾기
+            <img src="/img/footPrint.png" alt="발바닥" className="w-8 h-8" />
+          </button>
+        </Link>
       </div>
       <img
         src="/img/banner.png"
