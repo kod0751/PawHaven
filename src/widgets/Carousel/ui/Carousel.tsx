@@ -1,13 +1,13 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import Container from '../../shared/ui/ResponsiveContainer';
+import Container from '../../../shared/ui/ResponsiveContainer';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import Card from '../../shared/ui/Card';
+import Card from '../../../shared/ui/Card';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useRef } from 'react';
-import { useOneDayList } from '../../features/carousel/model/useOneDayList';
-import { getTomorrowDateString } from '../../shared/utils/date';
+import { useOneDayList } from '../model/useOneDayList';
+import { getTomorrowDateString } from '../../../shared/utils/date';
 
 export default function Carousel() {
   const tomorrowDate = getTomorrowDateString();
