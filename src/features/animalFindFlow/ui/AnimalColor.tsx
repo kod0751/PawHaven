@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useFindAnimalStore } from '../model/useFindAnimalStore';
 import Progressbar from '../../../shared/ui/ProgressBar';
 import Container from '../../../shared/ui/ResponsiveContainer';
@@ -51,20 +50,18 @@ const commonData = [
 export default function AnimalColor() {
   const { findAnimalData, updateAnimalData, nextStep, prevStep } =
     useFindAnimalStore();
-  const [selectedColors, setSelectedColors] = useState<string[]>(
-    findAnimalData.color || []
-  );
+
+  const selectedColors = findAnimalData.color || [];
 
   const handleColorSelect = (color: string) => {
-    if (selectedColors.includes(color)) {
-      setSelectedColors(selectedColors.filter((c) => c !== color));
-    } else {
-      setSelectedColors([...selectedColors, color]);
-    }
+    const newColors = selectedColors.includes(color)
+      ? selectedColors.filter((c) => c !== color)
+      : [...selectedColors, color];
+
+    updateAnimalData('color', newColors);
   };
 
   const handleNextClick = () => {
-    updateAnimalData('color', selectedColors);
     nextStep();
   };
 
