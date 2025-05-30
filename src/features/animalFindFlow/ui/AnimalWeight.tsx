@@ -62,20 +62,20 @@ export default function AnimalWeight() {
       <div className="flex justify-center items-center mt-20 gap-4">
         <button
           onClick={handlePrevClick}
-          className="w-60 h-14 mt-2 rounded-full bg-orange-500 flex items-center justify-center font-[NanumSquareNeoExtraBold] text-xl text-white cursor-pointer"
+          className="w-40 h-11 lg:w-60 lg:h-14 mt-2 rounded-full bg-orange-500 flex items-center justify-center font-[NanumSquareNeoExtraBold] text-md lg:text-xl text-white"
         >
           이전
           <img
             src="/img/footPrint.png"
             alt="이전"
-            className="w-8 h-8 ml-2 align-middle"
+            className="w-6 h-6 lg:w-8 lg:h-8 ml-2 align-middle"
           />
         </button>
 
         <button
           onClick={handleNextClick}
           disabled={!findAnimalData.weight}
-          className={`w-60 h-14 mt-2 rounded-full flex items-center justify-center font-[NanumSquareNeoExtraBold] text-xl text-white transition ${
+          className={`w-40 h-11 lg:w-60 lg:h-14 mt-2 rounded-full flex items-center justify-center font-[NanumSquareNeoExtraBold] text-md lg:text-xl text-white transition ${
             findAnimalData.weight
               ? 'bg-orange-500 cursor-pointer'
               : 'bg-gray-200 cursor-not-allowed'
@@ -85,7 +85,7 @@ export default function AnimalWeight() {
           <img
             src="/img/footPrint.png"
             alt="다음"
-            className="w-8 h-8 ml-2 align-middle"
+            className="w-6 h-6 lg:w-8 lg:h-8 ml-2 align-middle"
           />
         </button>
       </div>
