@@ -133,7 +133,7 @@ export default function AnimalResult() {
                 </div>
                 <button
                   onClick={() => goToDetail(data.ABDM_IDNTFY_NO)}
-                  className="bg-orange-500 w-32 h-8 font-['NanumSquareNeoExtraBold'] text-[1rem] flex items-center justify-center border-0 rounded-full text-white"
+                  className="bg-orange-500 w-35 h-10 font-['NanumSquareNeoExtraBold'] text-[1rem] flex items-center justify-center border-0 rounded-full text-white"
                 >
                   보러가기
                   <img
