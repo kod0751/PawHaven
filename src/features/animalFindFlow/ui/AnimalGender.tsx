@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useFindAnimalStore } from '../model/useFindAnimalStore';
 import Progressbar from '../../../shared/ui/ProgressBar';
 import Container from '../../../shared/ui/ResponsiveContainer';
@@ -16,16 +15,12 @@ const buttonData = [
 export default function AnimalGender() {
   const { findAnimalData, updateAnimalData, nextStep, prevStep } =
     useFindAnimalStore();
-  const [selectedGender, setSelectedGender] = useState(
-    findAnimalData.gender || ''
-  );
 
   const handleGenderSelect = (gender: string) => {
-    setSelectedGender(gender);
+    updateAnimalData('gender', gender);
   };
 
   const handleNextClick = () => {
-    updateAnimalData('gender', selectedGender);
     nextStep();
   };
 
@@ -46,7 +41,7 @@ export default function AnimalGender() {
             key={button.gender}
             onClick={() => handleGenderSelect(button.gender)}
             className={`w-25 h-25 border-2 rounded-xl bg-inherit cursor-pointer flex flex-col justify-center items-center font-[NanumSquareNeoBold] text-lg text-black ${
-              selectedGender === button.gender
+              findAnimalData.gender === button.gender
                 ? 'border-orange-500 shadow-md shadow-orange-500/40 transition duration-300'
                 : 'border-gray-200'
             } lg:w-40 lg:h-40`}
@@ -75,9 +70,9 @@ export default function AnimalGender() {
 
         <button
           onClick={handleNextClick}
-          disabled={!selectedGender}
+          disabled={!findAnimalData.gender}
           className={`w-60 h-14 mt-2 rounded-full flex items-center justify-center font-[NanumSquareNeoExtraBold] text-xl text-white transition ${
-            selectedGender
+            findAnimalData.gender
               ? 'bg-orange-500 cursor-pointer'
               : 'bg-gray-200 cursor-not-allowed'
           }`}

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useFindAnimalStore } from '../model/useFindAnimalStore';
 import Progressbar from '../../../shared/ui/ProgressBar';
 import Container from '../../../shared/ui/ResponsiveContainer';
@@ -11,16 +10,12 @@ const buttonData = [
 
 export default function AnimalSpecies() {
   const { findAnimalData, updateAnimalData, nextStep } = useFindAnimalStore();
-  const [selectedSpecies, setSelectedSpecies] = useState(
-    findAnimalData.species || ''
-  );
 
   const handleSpeciesSelect = (species: string) => {
-    setSelectedSpecies(species);
+    updateAnimalData('species', species);
   };
 
   const handleNextClick = () => {
-    updateAnimalData('species', selectedSpecies);
     nextStep();
   };
 
@@ -37,7 +32,7 @@ export default function AnimalSpecies() {
             key={button.species}
             onClick={() => handleSpeciesSelect(button.species)}
             className={`w-25 h-25 border-2 rounded-xl bg-inherit cursor-pointer flex flex-col justify-center items-center font-[NanumSquareNeoBold] text-lg text-black ${
-              selectedSpecies === button.species
+              findAnimalData.species === button.species
                 ? 'border-orange-500 shadow-md shadow-orange-500/40 transition duration-300'
                 : 'border-gray-200'
             } lg:w-40 lg:h-40`}
@@ -54,9 +49,9 @@ export default function AnimalSpecies() {
       <div className="flex justify-center items-center mt-20">
         <button
           onClick={handleNextClick}
-          disabled={!selectedSpecies}
+          disabled={!findAnimalData.species}
           className={`w-60 h-14 mt-2 rounded-full border-0 flex items-center justify-center font-[NanumSquareNeoExtraBold] text-xl text-white ${
-            selectedSpecies
+            findAnimalData.species
               ? 'bg-orange-500 cursor-pointer'
               : 'bg-gray-200 cursor-not-allowed'
           }`}

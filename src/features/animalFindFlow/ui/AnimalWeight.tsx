@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Progressbar from '../../../shared/ui/ProgressBar';
 import { useFindAnimalStore } from '../model/useFindAnimalStore';
 import Container from '../../../shared/ui/ResponsiveContainer';
@@ -18,16 +17,12 @@ const buttonData = [
 export default function AnimalWeight() {
   const { findAnimalData, updateAnimalData, nextStep, prevStep } =
     useFindAnimalStore();
-  const [selectedWeight, setSelectedWeight] = useState(
-    findAnimalData.weight || ''
-  );
 
   const handleWeightSelect = (weight: string) => {
-    setSelectedWeight(weight);
+    updateAnimalData('weight', weight);
   };
 
   const handleNextClick = () => {
-    updateAnimalData('weight', selectedWeight);
     nextStep();
   };
 
@@ -49,7 +44,7 @@ export default function AnimalWeight() {
               key={button.weight}
               onClick={() => handleWeightSelect(button.weight)}
               className={`w-25 h-25 border-2 rounded-xl bg-inherit cursor-pointer flex flex-col justify-center items-center font-[NanumSquareNeoBold] text-lg text-black ${
-                selectedWeight === button.weight
+                findAnimalData.weight === button.weight
                   ? 'border-orange-500 shadow-md shadow-orange-500/40 transition duration-300'
                   : 'border-gray-200'
               } lg:w-40 lg:h-40`}
@@ -79,9 +74,9 @@ export default function AnimalWeight() {
 
         <button
           onClick={handleNextClick}
-          disabled={!selectedWeight}
+          disabled={!findAnimalData.weight}
           className={`w-60 h-14 mt-2 rounded-full flex items-center justify-center font-[NanumSquareNeoExtraBold] text-xl text-white transition ${
-            selectedWeight
+            findAnimalData.weight
               ? 'bg-orange-500 cursor-pointer'
               : 'bg-gray-200 cursor-not-allowed'
           }`}
