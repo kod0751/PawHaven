@@ -30,6 +30,7 @@ export default function HomeBanner() {
         src="/img/banner.png"
         alt="배너"
         className="w-lg h-auto hidden xl:block"
+        loading="lazy"
       />
     </Container>
   );
