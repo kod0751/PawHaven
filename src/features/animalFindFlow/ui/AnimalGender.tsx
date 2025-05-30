@@ -42,7 +42,7 @@ export default function AnimalGender() {
             onClick={() => handleGenderSelect(button.gender)}
             className={`w-25 h-25 border-2 rounded-xl bg-inherit cursor-pointer flex flex-col justify-center items-center font-[NanumSquareNeoBold] text-lg text-black ${
               findAnimalData.gender === button.gender
-                ? 'border-orange-500 shadow-md shadow-orange-500/40 transition duration-300'
+                ? 'border-orange-500 shadow-md transition duration-200 bg-orange-50'
                 : 'border-gray-200'
             } lg:w-40 lg:h-40`}
           >
