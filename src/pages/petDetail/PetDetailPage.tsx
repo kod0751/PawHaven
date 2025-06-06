@@ -124,9 +124,7 @@ export default function PetDetailPage() {
             </div>
           </div>
         </Container>
-      ) : (
-        <div>로딩중...</div>
-      )}
+      ) : null}
     </>
   );
 }
