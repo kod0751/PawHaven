@@ -3,7 +3,7 @@ import { useAnimalList } from '../../features/animalList/model/useAnimalList';
 export const useGetDetail = (id: string | undefined) => {
   const { data: allData, isLoading, error } = useAnimalList();
 
-  if (id) {
+  if (!id) {
     return {
       data: null,
       isLoading: false,
