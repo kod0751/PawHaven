@@ -41,7 +41,10 @@ export default function PetDetailPage() {
         <Container className="py-8">
           <div>
             <div className="text-xl font-[NanumSquareNeoExtraBold] text-black flex items-center lg:text-2xl xl:my-8 xl:text-4xl">
-              <button onClick={toggleBookmark} className="focus:outline-none">
+              <button
+                onClick={toggleBookmark}
+                className="focus:outline-none hover:scale-110 transition-transform duration-200"
+              >
                 <Bookmark
                   fill={isBookmarked ? '#F97316' : 'none'}
                   className="w-6 h-6 sm:w-7 sm:h-7 lg:w-9 lg:h-9 xl:w-10 xl:h-10"

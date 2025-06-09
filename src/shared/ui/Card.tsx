@@ -30,7 +30,10 @@ export default function Card({ data }: CardProps) {
         <span className="font-[NanumSquareNeoHeavy] text-[1.2rem]">
           {data.SPECIES_NM.replace(/\[.*?\]\s*/, '')}
         </span>
-        <button onClick={toggleBookmark} className="focus:outline-none">
+        <button
+          onClick={toggleBookmark}
+          className="focus:outline-none hover:scale-110 transition-transform duration-200"
+        >
           <Bookmark fill={isBookmarked ? '#F97316' : 'none'} color="#F97316" />
         </button>
       </div>
