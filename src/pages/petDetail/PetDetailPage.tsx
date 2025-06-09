@@ -5,21 +5,27 @@ import { Map, MapMarker } from 'react-kakao-maps-sdk';
 import { useBookmark } from '../../shared/lib/hooks/useBookmark';
 import { Bookmark } from 'lucide-react';
 import Loading from '../../shared/ui/Loading';
+import ErrorCard from '../../shared/ui/ErrorCard';
 
 export default function PetDetailPage() {
   const { id } = useParams();
-  const { data, isLoading } = useGetDetail(id);
-  const { isBookmarked, toggleBookmark } = useBookmark(data);
+  const { data, isLoading, error } = useGetDetail(id);
+  const { isBookmarked, toggleBookmark } = useBookmark(data ?? undefined);
 
   if (isLoading)
     return (
-      <div className="mt-10">
+      <div className="mt-60">
         <Loading />
       </div>
     );
 
-  if (!data)
-    return <div className="text-center mt-10">존재하지 않는 동물입니다.</div>;
+  if (error) {
+    return (
+      <div className="mt-60">
+        <ErrorCard error={error} />;
+      </div>
+    );
+  }
 
   const formatDate = (dateString: string) => {
     if (!dateString) return '';
