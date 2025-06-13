@@ -7,30 +7,29 @@ export function useFilteredAnimalList() {
   const { data: allAnimals, isLoading, error } = useAnimalList();
   const [filters, setFilters] = useState<FilterOptions>({});
 
-  const breedMatchMap: Record<string, string> = {
-    강아지: '개',
-    고양이: '고양이',
-    그외: '기타축종',
-  };
-  const matchKeyword = breedMatchMap[filters.breed ?? ''];
-
-  const genderMap: Record<string, string> = {
-    남아: 'M',
-    여아: 'F',
-  };
-
-  const mappedGender = genderMap[filters.gender ?? ''];
-
-  const neuteredMap: Record<string, string> = {
-    완료: 'Y',
-    미완료: 'N',
-    알수없음: 'U',
-  };
-
-  const mappedNeuterd = neuteredMap[filters.neutered ?? ''];
-
   const filteredAnimals = useMemo(() => {
     if (!allAnimals) return [];
+
+    const breedMatchMap: Record<string, string> = {
+      강아지: '개',
+      고양이: '고양이',
+      그외: '기타축종',
+    };
+
+    const genderMap: Record<string, string> = {
+      남아: 'M',
+      여아: 'F',
+    };
+
+    const neuteredMap: Record<string, string> = {
+      완료: 'Y',
+      미완료: 'N',
+      알수없음: 'U',
+    };
+
+    const matchKeyword = breedMatchMap[filters.breed ?? ''];
+    const mappedGender = genderMap[filters.gender ?? ''];
+    const mappedNeuterd = neuteredMap[filters.neutered ?? ''];
 
     return allAnimals.filter((animal) => {
       if (
