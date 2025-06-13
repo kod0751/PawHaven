@@ -3,6 +3,23 @@ import { useAnimalList } from './useAnimalList';
 import { calculatePetAge } from '../../../shared/utils/calculatePetAge';
 import { FilterOptions } from './types';
 
+const breedMatchMap = {
+  강아지: '개',
+  고양이: '고양이',
+  그외: '기타축종',
+} as const;
+
+const genderMap = {
+  남아: 'M',
+  여아: 'F',
+} as const;
+
+const neuteredMap = {
+  완료: 'Y',
+  미완료: 'N',
+  알수없음: 'U',
+} as const;
+
 export function useFilteredAnimalList() {
   const { data: allAnimals, isLoading, error } = useAnimalList();
   const [filters, setFilters] = useState<FilterOptions>({});
@@ -10,26 +27,12 @@ export function useFilteredAnimalList() {
   const filteredAnimals = useMemo(() => {
     if (!allAnimals) return [];
 
-    const breedMatchMap: Record<string, string> = {
-      강아지: '개',
-      고양이: '고양이',
-      그외: '기타축종',
-    };
-
-    const genderMap: Record<string, string> = {
-      남아: 'M',
-      여아: 'F',
-    };
-
-    const neuteredMap: Record<string, string> = {
-      완료: 'Y',
-      미완료: 'N',
-      알수없음: 'U',
-    };
-
-    const matchKeyword = breedMatchMap[filters.breed ?? ''];
-    const mappedGender = genderMap[filters.gender ?? ''];
-    const mappedNeuterd = neuteredMap[filters.neutered ?? ''];
+    const matchKeyword =
+      breedMatchMap[filters.breed as keyof typeof breedMatchMap] ?? '';
+    const mappedGender =
+      genderMap[filters.gender as keyof typeof genderMap] ?? '';
+    const mappedNeuterd =
+      neuteredMap[filters.neutered as keyof typeof neuteredMap] ?? '';
 
     return allAnimals.filter((animal) => {
       if (
