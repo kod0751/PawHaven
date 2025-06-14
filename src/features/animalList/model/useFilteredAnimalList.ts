@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import { useAnimalList } from './useAnimalList';
 import { calculatePetAge } from '../../../shared/utils/calculatePetAge';
 import { FilterOptions } from './types';
+import { AnimalData } from '../../../shared/api/types';
 
 const breedMatchMap = {
   강아지: '개',
@@ -31,58 +32,58 @@ export function useFilteredAnimalList() {
       breedMatchMap[filters.breed as keyof typeof breedMatchMap] ?? '';
     const mappedGender =
       genderMap[filters.gender as keyof typeof genderMap] ?? '';
-    const mappedNeuterd =
+    const mappedNeutered =
       neuteredMap[filters.neutered as keyof typeof neuteredMap] ?? '';
 
-    return allAnimals.filter((animal) => {
-      if (
-        filters.region &&
-        filters.region !== '전체' &&
-        animal.SIGUN_NM !== filters.region
-      )
-        return false;
-      if (
-        filters.status &&
-        filters.status !== '전체' &&
-        animal.STATE_NM !== filters.status
-      )
-        return false;
-      if (
-        filters.breed &&
-        filters.breed !== '전체' &&
-        !animal.SPECIES_NM.includes(matchKeyword)
-      )
-        return false;
-      if (filters.age && filters.age !== '전체') {
-        const petAge = calculatePetAge(animal.AGE_INFO);
-        if (filters.age === '1세미만' && petAge >= 1) return false;
-        if (filters.age === '1살~5살' && (petAge < 1 || petAge > 5))
-          return false;
-        if (filters.age === '6살~9살' && (petAge < 6 || petAge > 9))
-          return false;
-        if (filters.age === '10살이상' && petAge < 10) return false;
-      }
-      if (
-        filters.gender &&
-        filters.gender !== '전체' &&
-        animal.SEX_NM !== mappedGender
-      )
-        return false;
-      if (
-        filters.neutered &&
-        filters.neutered !== '전체' &&
-        animal.NEUT_YN !== mappedNeuterd
-      )
-        return false;
-      if (
-        filters.shelter &&
-        filters.shelter !== '' &&
-        animal.SHTER_NM !== filters.shelter
-      )
-        return false;
+    const matchesRegion = (animal: AnimalData) =>
+      !filters.region ||
+      filters.region === '전체' ||
+      animal.SIGUN_NM === filters.region;
 
-      return true;
-    });
+    const matchesStatus = (animal: AnimalData) =>
+      !filters.status ||
+      filters.status === '전체' ||
+      animal.STATE_NM === filters.status;
+
+    const matchesBreed = (animal: AnimalData) =>
+      !filters.breed ||
+      filters.breed === '전체' ||
+      animal.SPECIES_NM.includes(matchKeyword);
+
+    const matchesGender = (animal: AnimalData) =>
+      !filters.gender ||
+      filters.gender === '전체' ||
+      animal.SEX_NM === mappedGender;
+
+    const matchesNeutered = (animal: AnimalData) =>
+      !filters.neutered ||
+      filters.neutered === '전체' ||
+      animal.NEUT_YN === mappedNeutered;
+
+    const matchesShelter = (animal: AnimalData) =>
+      !filters.shelter || animal.SHTER_NM === filters.shelter;
+
+    const matchesAge = (animal: AnimalData) => {
+      if (!filters.age || filters.age === '전체') return true;
+      const petAge = calculatePetAge(animal.AGE_INFO);
+      return (
+        (filters.age === '1세미만' && petAge < 1) ||
+        (filters.age === '1살~5살' && petAge >= 1 && petAge <= 5) ||
+        (filters.age === '6살~9살' && petAge >= 6 && petAge <= 9) ||
+        (filters.age === '10살이상' && petAge >= 10)
+      );
+    };
+
+    return allAnimals.filter(
+      (animal) =>
+        matchesRegion(animal) &&
+        matchesStatus(animal) &&
+        matchesBreed(animal) &&
+        matchesGender(animal) &&
+        matchesNeutered(animal) &&
+        matchesShelter(animal) &&
+        matchesAge(animal)
+    );
   }, [allAnimals, filters]);
 
   return {
