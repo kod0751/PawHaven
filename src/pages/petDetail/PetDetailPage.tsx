@@ -6,11 +6,20 @@ import { useBookmark } from '../../shared/lib/hooks/useBookmark';
 import { Bookmark } from 'lucide-react';
 import Loading from '../../shared/ui/Loading';
 import ErrorCard from '../../shared/ui/ErrorCard';
+import { useState } from 'react';
 
 export default function PetDetailPage() {
   const { id } = useParams();
   const { data, isLoading, error } = useGetDetail(id);
   const { isBookmarked, toggleBookmark } = useBookmark(data ?? undefined);
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
+
+  const handleImageLoad = () => setImageLoaded(true);
+  const handleImageError = () => {
+    setImageError(true);
+    setImageLoaded(true);
+  };
 
   if (isLoading)
     return (
@@ -57,11 +66,25 @@ export default function PetDetailPage() {
               {data.PBLANC_IDNTFY_NO}
             </div>
             <div className="flex justify-center flex-wrap gap-10 p-8 xl:flex-nowrap xl:gap-40">
-              <div className="w-xl h-xl">
+              <div className="w-xl h-xl relative">
+                {!imageLoaded && (
+                  <div className="w-full aspect-square bg-gray-200 rounded-2xl animate-pulse flex items-center justify-center">
+                    <span className="text-gray-400"></span>
+                  </div>
+                )}
+
                 <img
-                  src={data.IMAGE_COURS || '/img/empty.png'}
+                  src={
+                    imageError
+                      ? '/img/empty.png'
+                      : data.IMAGE_COURS || '/img/empty.png'
+                  }
                   alt="동물 이미지"
-                  className="w-full aspect-square object-cover rounded-2xl"
+                  className={`w-full aspect-square object-cover rounded-2xl transition-opacity duration-300 ${
+                    imageLoaded ? 'opacity-100' : 'opacity-0 absolute top-0'
+                  } bg-white`}
+                  onLoad={handleImageLoad}
+                  onError={handleImageError}
                 />
               </div>
 
