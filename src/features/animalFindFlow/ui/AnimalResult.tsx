@@ -106,7 +106,26 @@ export default function AnimalResult() {
   return (
     <Container>
       {filteredAnimals.length < 3 ? (
-        <Empty />
+        <>
+          <Empty />
+          <div className="flex justify-center items-center gap-4 lg:gap-12 pb-12">
+            <button
+              onClick={open}
+              className="w-56 h-12 bg-white border-1 border-neutral-300 rounded-xl font-['NanumSquareNeoExtraBold'] text-md"
+            >
+              결과 설명듣기
+            </button>
+            <button
+              onClick={() => {
+                reset();
+                navigate('/find');
+              }}
+              className="w-56 h-12 bg-neutral-800 border-0 rounded-xl font-['NanumSquareNeoExtraBold'] text-md text-white"
+            >
+              테스트 다시 하기
+            </button>
+          </div>
+        </>
       ) : (
         <>
           <div className="flex justify-center itmes-center font-[NanumSquareNeoExtraBold] text-2xl pt-20 lg:text-4xl">
