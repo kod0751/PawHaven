@@ -96,7 +96,7 @@ export default function CategoryFilter({
                 {category.options.map((option) => (
                   <button
                     key={option}
-                    className={`block w-full text-left px-4 py-2 text-sm ${
+                    className={`block w-full text-center px-4 py-2 text-sm ${
                       option === filters[category.id as keyof FilterOptions]
                         ? 'text-orange-500'
                         : 'text-gray-700 hover:bg-gray-100'
