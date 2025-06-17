@@ -106,7 +106,7 @@ export default function Graph() {
       },
       title: {
         display: true,
-        text: '제품별 판매 비율',
+        text: '시별 유기동물 수',
         font: {
           size: 16,
         },
