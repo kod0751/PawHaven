@@ -44,11 +44,11 @@ PawHaven은 경기도 내 유기동물들의 현황을 파악하고, 잃어버�
 
 ```
 src/
-├── features/      # 주요 도메인별 기능 모듈 (e.g., 입양, 동물 상세 등)
+├── features/      # 주요 도메인별 기능 모듈 (나의 반려동물찾기, 동물 리스트 등)
 ├── pages/         # 라우팅되는 페이지 컴포넌트
 ├── shared/        # 공통 컴포넌트, 유틸 함수, 타입 등 재사용 모듈
 ├── styles/        # 전역 스타일, Tailwind 설정, 폰트 등
-└── widgets/       # 독립적 UI 위젯 (e.g., Header, Footer 등)
+└── widgets/       # 독립적 UI 위젯 (Header, 케러셀 등)
 ```
 
 ## 🚀 시작하기
