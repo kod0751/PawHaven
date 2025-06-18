@@ -7,6 +7,7 @@ import { Bookmark } from 'lucide-react';
 import Loading from '../../shared/ui/Loading';
 import ErrorCard from '../../shared/ui/ErrorCard';
 import { useState } from 'react';
+import SEO from '../../shared/ui/SEO';
 
 export default function PetDetailPage() {
   const { id } = useParams();
@@ -46,6 +47,11 @@ export default function PetDetailPage() {
 
   return (
     <>
+      <SEO
+        title="Detail"
+        description="특정 동물의 자세한 정보를 보여드려요!~"
+        keywords="공고번호, 품종, 성별, 체중, 공고기한, 센터주소, 보호센터"
+      />
       {data ? (
         <Container className="py-8">
           <div>
