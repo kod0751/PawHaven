@@ -32,7 +32,7 @@ export default function PetDetailPage() {
   if (error) {
     return (
       <div className="mt-60">
-        <ErrorCard error={error} />;
+        <ErrorCard error={error} />
       </div>
     );
   }
