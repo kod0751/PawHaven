@@ -72,7 +72,7 @@ export default function PetDetailPage() {
               {data.PBLANC_IDNTFY_NO}
             </div>
             <div className="flex justify-center flex-wrap gap-10 p-8 xl:flex-nowrap xl:gap-40">
-              <div className="w-xl h-xl relative">
+              <div className="w-xl h-xl relative flex justify-center items-center">
                 {!imageLoaded && (
                   <div className="w-full aspect-square bg-gray-200 rounded-2xl animate-pulse flex items-center justify-center">
                     <span className="text-gray-400"></span>
