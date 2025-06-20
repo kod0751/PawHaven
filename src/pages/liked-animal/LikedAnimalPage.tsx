@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import AnimalList from '../../features/animalList/ui/AnimalList';
+import AnimalList from '../../features/animal-list-management/ui/AnimalList';
 import SEO from '../../shared/ui/SEO';
 
 export default function LikedAnimalPage() {

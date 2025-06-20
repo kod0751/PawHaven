@@ -1,6 +1,6 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '../utils/cs';
-import { PaginationProps } from '../../features/animalList/model/types';
+import { PaginationProps } from '../../features/animal-list-management/model/types';
 
 export default function Pagination({
   currentPage,

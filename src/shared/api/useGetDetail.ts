@@ -1,4 +1,4 @@
-import { useAnimalList } from '../../features/animalList/model/useAnimalList';
+import { useAnimalList } from '../../features/animal-list-management/model/useAnimalList';
 
 export const useGetDetail = (id: string | undefined) => {
   const { data: allData, isLoading, error } = useAnimalList();

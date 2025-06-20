@@ -13,7 +13,7 @@ import {
   ChartOptions,
 } from 'chart.js';
 import { Bar, Doughnut } from 'react-chartjs-2';
-import { useAnimalList } from '../../../features/animalList/model/useAnimalList';
+import { useAnimalList } from '../../../features/animal-list-management/model/useAnimalList';
 
 ChartJS.register(
   CategoryScale,

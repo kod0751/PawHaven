@@ -1,6 +1,6 @@
-import { useFilteredAnimalList } from '../../features/animalList/model/useFilteredAnimalList';
-import AnimalList from '../../features/animalList/ui/AnimalList';
-import CategoryFilter from '../../features/animalList/ui/Category';
+import { useFilteredAnimalList } from '../../features/animal-list-management/model/useFilteredAnimalList';
+import AnimalList from '../../features/animal-list-management/ui/AnimalList';
+import CategoryFilter from '../../features/animal-list-management/ui/Category';
 import SEO from '../../shared/ui/SEO';
 import ShelterMap from '../../widgets/ShelterMap/ShelterMap';
 

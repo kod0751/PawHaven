@@ -1,7 +1,7 @@
-import { useFilteredAnimalList } from '../../features/animalList/model/useFilteredAnimalList';
-import AnimalList from '../../features/animalList/ui/AnimalList';
+import { useFilteredAnimalList } from '../../features/animal-list-management/model/useFilteredAnimalList';
+import AnimalList from '../../features/animal-list-management/ui/AnimalList';
 import { Carousel } from '../../widgets/Carousel';
-import CategoryFilter from '../../features/animalList/ui/Category';
+import CategoryFilter from '../../features/animal-list-management/ui/Category';
 import SEO from '../../shared/ui/SEO';
 
 export default function AnimalListPage() {

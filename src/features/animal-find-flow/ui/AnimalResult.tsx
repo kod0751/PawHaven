@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Container from '../../../shared/ui/ResponsiveContainer';
 import { calculatePetAge } from '../../../shared/utils/calculatePetAge';
-import { useAnimalList } from '../../animalList/model/useAnimalList';
+import { useAnimalList } from '../../animal-list-management/model/useAnimalList';
 import { useFindAnimalStore } from '../model/useFindAnimalStore';
 import { useNavigate } from 'react-router-dom';
 import { useModalStore } from '../model/useModalStore';

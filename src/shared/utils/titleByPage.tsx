@@ -1,4 +1,4 @@
-import { FilterOptions } from '../../features/animalList/model/types';
+import { FilterOptions } from '../../features/animal-list-management/model/types';
 
 export function titleByPage(
   pageType: string,

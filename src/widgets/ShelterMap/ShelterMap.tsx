@@ -1,6 +1,6 @@
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 import Container from '../../shared/ui/ResponsiveContainer';
-import { CategoryFilterProps } from '../../features/animalList/model/types';
+import { CategoryFilterProps } from '../../features/animal-list-management/model/types';
 
 export default function ShelterMap({
   filters,
