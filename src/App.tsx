@@ -2,13 +2,13 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Header } from './widgets/Header';
 
 import HomePage from './pages/home/HomePage';
-import AnimalListPage from './pages/animalList/AnimalListPage';
-import AnimalByShelterPage from './pages/animalByShelter/AnimalByShelterPage';
-import LikedAnimalPage from './pages/likedAnimal/LikedAnimalPage';
-import PetDetailPage from './pages/petDetail/PetDetailPage';
-import AnimalFindPage from './pages/AnimalFind/AnimalFindPage';
+import AnimalListPage from './pages/animal-list/AnimalListPage';
+import AnimalByShelterPage from './pages/animal-by-shelter/AnimalByShelterPage';
+import LikedAnimalPage from './pages/liked-animal/LikedAnimalPage';
+import PetDetailPage from './pages/pet-detail/PetDetailPage';
+import AnimalFindPage from './pages/animal-find/AnimalFindPage';
 import ScrollToTopButton from './shared/ui/ScrollToTopButton';
-import NotFoundPage from './pages/Error/404';
+import NotFoundPage from './pages/error/404';
 
 function AppContent() {
   const location = useLocation();

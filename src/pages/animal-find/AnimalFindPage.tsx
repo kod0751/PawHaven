@@ -1,9 +1,9 @@
-import { useFindAnimalStore } from '../../features/animalFindFlow/model/useFindAnimalStore';
-import AnimalColor from '../../features/animalFindFlow/ui/AnimalColor';
-import AnimalGender from '../../features/animalFindFlow/ui/AnimalGender';
-import AnimalResult from '../../features/animalFindFlow/ui/AnimalResult';
-import AnimalSpecies from '../../features/animalFindFlow/ui/AnimalSpecies';
-import AnimalWeight from '../../features/animalFindFlow/ui/AnimalWeight';
+import { useFindAnimalStore } from '../../features/animal-find-flow/model/useFindAnimalStore';
+import AnimalColor from '../../features/animal-find-flow/ui/AnimalColor';
+import AnimalGender from '../../features/animal-find-flow/ui/AnimalGender';
+import AnimalResult from '../../features/animal-find-flow/ui/AnimalResult';
+import AnimalSpecies from '../../features/animal-find-flow/ui/AnimalSpecies';
+import AnimalWeight from '../../features/animal-find-flow/ui/AnimalWeight';
 import SEO from '../../shared/ui/SEO';
 
 export default function AnimalFindPage() {
