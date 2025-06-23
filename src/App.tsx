@@ -13,7 +13,6 @@ import NotFoundPage from './pages/error/404';
 function AppContent() {
   const location = useLocation();
 
-  // 유효한 경로들을 정의
   const validPaths = ['/', '/list', '/find', '/shelter', '/liked'];
   const isValidPath =
     validPaths.includes(location.pathname) ||
