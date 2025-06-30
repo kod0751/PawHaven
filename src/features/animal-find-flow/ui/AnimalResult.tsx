@@ -146,7 +146,7 @@ export default function AnimalResult() {
                     className="w-40 aspect-square object-cover"
                   />
                 </div>
-                <div className="w-40 flex justify-around items-center">
+                <div className="w-40 flex justify-around items-center text-lg">
                   <span>{data.SPECIES_NM.replace(/\[.*?\]\s*/, '')}</span>
                   <span>{calculatePetAge(data.AGE_INFO)}살</span>
                 </div>
