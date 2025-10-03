@@ -29,20 +29,17 @@ export const fetchAllAnimalList = async (): Promise<AnimalData[]> => {
   const pageSize = 1000;
   const totalPages = Math.ceil(totalCount / pageSize);
 
-  // 첫 페이지 데이터 먼저 가져오기
-  const firstPageData = await fetchAnimalPage(1, pageSize, KEY, baseUrl);
-
-  // 2페이지부터 병렬 요청
+  // 모든 페이지를 병렬로 요청
   const parallelQueries: Promise<AnimalData[]>[] = [];
-  for (let page = 2; page <= totalPages; page++) {
+  for (let page = 1; page <= totalPages; page++) {
     parallelQueries.push(fetchAnimalPage(page, pageSize, KEY, baseUrl));
   }
 
   // 병렬 요청 실행
-  const parallelResults = await Promise.all(parallelQueries);
+  const results = await Promise.all(parallelQueries);
 
   // 모든 데이터 합치기
-  const allData = [firstPageData, ...parallelResults].flat();
+  const allData = results.flat();
 
   return allData;
 };
