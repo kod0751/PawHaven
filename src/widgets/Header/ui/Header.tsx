@@ -16,8 +16,8 @@ export default function Header() {
     <header className="relative border-b border-gray-100">
       <Container className="relative">
         <div className="flex justify-between items-center py-8">
-          <Link to="/">
-            <div className="flex font-['jalnan'] text-2xl">
+          <h1>
+            <Link to="/" className="flex font-['jalnan'] text-2xl items-center">
               발바닥
               <img
                 src="/img/logo.png"
@@ -25,56 +25,58 @@ export default function Header() {
                 className="w-10 h-3 -translate-y-1"
               />
               구조대
-            </div>
-          </Link>
+            </Link>
+          </h1>
 
           {/* 데스크탑 메뉴 */}
-          <ul className="hidden md:flex gap-8 font-['NanumSquareNeoExtraBold']">
-            <Link to="/list">
-              <li
-                className={`relative transition-all ${
-                  currentPath === '/list'
-                    ? 'text-orange-500'
-                    : 'hover:text-orange-400'
-                }`}
-              >
-                유기동물보기
-              </li>
-            </Link>
-            <Link to="/find">
-              <li
-                className={`relative transition-all ${
-                  currentPath === '/find'
-                    ? 'text-orange-500'
-                    : 'hover:text-orange-400'
-                }`}
-              >
-                털친소
-              </li>
-            </Link>
-            <Link to="/shelter">
-              <li
-                className={`relative transition-all ${
-                  currentPath === '/shelter'
-                    ? 'text-orange-500'
-                    : 'hover:text-orange-400'
-                }`}
-              >
-                주변 보호소 찾기
-              </li>
-            </Link>
-            <Link to="/liked">
-              <li
-                className={`relative transition-all ${
-                  currentPath === '/liked'
-                    ? 'text-orange-500'
-                    : 'hover:text-orange-400'
-                }`}
-              >
-                나의 관심동물
-              </li>
-            </Link>
-          </ul>
+          <nav aria-label="주요 메뉴" className="hidden md:block">
+            <ul className="flex gap-8 font-['NanumSquareNeoExtraBold']">
+              <Link to="/list">
+                <li
+                  className={`relative transition-all ${
+                    currentPath === '/list'
+                      ? 'text-orange-500'
+                      : 'hover:text-orange-400'
+                  }`}
+                >
+                  유기동물보기
+                </li>
+              </Link>
+              <Link to="/find">
+                <li
+                  className={`relative transition-all ${
+                    currentPath === '/find'
+                      ? 'text-orange-500'
+                      : 'hover:text-orange-400'
+                  }`}
+                >
+                  털친소
+                </li>
+              </Link>
+              <Link to="/shelter">
+                <li
+                  className={`relative transition-all ${
+                    currentPath === '/shelter'
+                      ? 'text-orange-500'
+                      : 'hover:text-orange-400'
+                  }`}
+                >
+                  주변 보호소 찾기
+                </li>
+              </Link>
+              <Link to="/liked">
+                <li
+                  className={`relative transition-all ${
+                    currentPath === '/liked'
+                      ? 'text-orange-500'
+                      : 'hover:text-orange-400'
+                  }`}
+                >
+                  나의 관심동물
+                </li>
+              </Link>
+            </ul>
+          </nav>
 
           {/* 모바일 메뉴 버튼 */}
           <button
@@ -91,7 +93,7 @@ export default function Header() {
         </div>
 
         {/* 모바일 메뉴 */}
-        <div
+        <nav
           className={`fixed inset-0 bg-white z-40 transform transition-transform duration-300 ease-in-out ${
             isMenuOpen ? 'translate-x-0' : 'translate-x-full'
           } md:hidden`}
@@ -144,7 +146,7 @@ export default function Header() {
               </Link>
             </ul>
           </div>
-        </div>
+        </nav>
       </Container>
     </header>
   );
