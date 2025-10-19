@@ -171,29 +171,40 @@ export default function Graph() {
   };
 
   return (
-    <Container className="py-8">
-      <div className="flex flex-col font-[NanumSquareNeoExtraBold] text-3xl gap-1 lg:text-4xl">
-        <div>경기도</div>
-        <div>
-          <span className="text-orange-500">유기동물</span> 현황
-        </div>
-      </div>
-
-      <div className="py-10 max-w-6xl mx-auto">
-        <div className="flex flex-col md:flex-row gap-8">
-          <div className="w-full md:w-1/2 bg-white p-4">
-            <div className="h-64 md:h-80">
-              <Doughnut options={doughnutOptions} data={doughnutData} />
-            </div>
+    <section aria-labelledby="animal-graph-title" className="py-12">
+      <Container>
+        <h2
+          id="animal-graph-title"
+          className="flex flex-col font-[NanumSquareNeoExtraBold] text-3xl gap-1 lg:text-4xl"
+        >
+          <div>경기도</div>
+          <div>
+            <span className="text-orange-500">유기동물</span> 현황
           </div>
+        </h2>
 
-          <div className="w-full md:w-1/2 bg-white p-4">
-            <div className="h-64 md:h-80">
-              <Bar options={barOptions} data={barData} />
-            </div>
+        <div className="py-10 max-w-6xl mx-auto">
+          <div className="flex flex-col md:flex-row gap-8">
+            <figure
+              className="w-full md:w-1/2 bg-white p-4"
+              aria-label="시별 유기동물 수 도넛 차트"
+            >
+              <div className="h-64 md:h-80">
+                <Doughnut options={doughnutOptions} data={doughnutData} />
+              </div>
+            </figure>
+
+            <figure
+              className="w-full md:w-1/2 bg-white p-4"
+              aria-label="상태별 유기동물 수 막대 차트"
+            >
+              <div className="h-64 md:h-80">
+                <Bar options={barOptions} data={barData} />
+              </div>
+            </figure>
           </div>
         </div>
-      </div>
-    </Container>
+      </Container>
+    </section>
   );
 }
