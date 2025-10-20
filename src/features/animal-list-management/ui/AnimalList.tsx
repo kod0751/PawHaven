@@ -33,19 +33,23 @@ export default function AnimalList({
   };
 
   return (
-    <Container className="py-8">
-      <div className="font-['NanumSquareNeoExtraBold'] text-3xl my-8 lg:text-4xl">
-        {titleByPage(pageType, totalCount, filters)}
-      </div>
+    <section aria-labelledby="animal-list-title">
+      <Container className="py-8">
+        <h2
+          id="animal-list-title"
+          className="font-['NanumSquareNeoExtraBold'] text-3xl my-8 lg:text-4xl"
+        >
+          {titleByPage(pageType, totalCount, filters)}
+        </h2>
 
-      {isLoading ? (
-        <div className="text-center py-16">
-          <Loading />
-        </div>
-      ) : (
-        <>
-          <div
-            className="
+        {isLoading ? (
+          <div className="text-center py-16">
+            <Loading />
+          </div>
+        ) : (
+          <>
+            <div
+              className="
             w-full mb-12 grid grid-cols-5 gap-y-8 gap-x-2 justify-items-center
             max-[1400px]:grid-cols-4
             max-[1200px]:grid-cols-3
@@ -53,25 +57,31 @@ export default function AnimalList({
             max-[710px]:grid-cols-2 max-[710px]:mx-auto max-[710px]:mb-8 max-[710px]:w-auto max-[710px]:gap-8
             max-[500px]:grid-cols-1 max-[500px]:justify-center max-[500px]:mx-auto max-[500px]:mb-8 max-[500px]:w-auto max-[500px]:gap-8
             "
-          >
-            {paginatedAnimals.length > 0 ? (
-              paginatedAnimals.map((animal, index) => (
-                <Card key={index} data={animal}></Card>
-              ))
-            ) : (
-              <Empty />
-            )}
-          </div>
+            >
+              {paginatedAnimals.length > 0 ? (
+                paginatedAnimals.map((animal, index) => (
+                  <Card key={index} data={animal}></Card>
+                ))
+              ) : (
+                <Empty />
+              )}
+            </div>
 
-          {totalPages > 1 && (
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={handlePageChange}
-            />
-          )}
-        </>
-      )}
-    </Container>
+            {totalPages > 1 && (
+              <nav
+                aria-label="동물 목록 페이지 이동"
+                className="flex justify-center"
+              >
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={handlePageChange}
+                />
+              </nav>
+            )}
+          </>
+        )}
+      </Container>
+    </section>
   );
 }

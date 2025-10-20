@@ -109,31 +109,36 @@ export default function ShelterMap({
   };
 
   return (
-    <Container className="py-8">
-      <div className="font-['NanumSquareNeoExtraBold'] text-3xl my-8 lg:4xl">
-        나와 가까운 보호소를 클릭해 보세요!
-      </div>
-      <Map
-        center={{
-          lat: 37.5401156,
-          lng: 126.8700487,
-        }}
-        className="w-full h-120 rounded-2xl"
-        level={10}
-      >
-        {positions.map((loc, index) => (
-          <MapMarker
-            key={index}
-            position={loc.latlng}
-            image={{
-              src: '/img/logo.png',
-              size: { width: 22, height: 20 },
-            }}
-            title={loc.title}
-            onClick={() => handleShelterClick(loc.title)}
-          />
-        ))}
-      </Map>
-    </Container>
+    <section aria-labelledby="shelter-map-title">
+      <Container className="py-8">
+        <h2
+          id="shelter-map-title"
+          className="font-['NanumSquareNeoExtraBold'] text-3xl my-8 lg:4xl"
+        >
+          나와 가까운 보호소를 클릭해 보세요!
+        </h2>
+        <Map
+          center={{
+            lat: 37.5401156,
+            lng: 126.8700487,
+          }}
+          className="w-full h-120 rounded-2xl"
+          level={10}
+        >
+          {positions.map((loc, index) => (
+            <MapMarker
+              key={index}
+              position={loc.latlng}
+              image={{
+                src: '/img/logo.png',
+                size: { width: 22, height: 20 },
+              }}
+              title={loc.title}
+              onClick={() => handleShelterClick(loc.title)}
+            />
+          ))}
+        </Map>
+      </Container>
+    </section>
   );
 }
