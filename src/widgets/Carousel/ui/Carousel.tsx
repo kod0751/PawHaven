@@ -32,11 +32,20 @@ export default function Carousel() {
               prevEl: prevRef.current,
               nextEl: nextRef.current,
             }}
-            onBeforeInit={(swiper) => {
-              // @ts-expect-error Swiper params navigation property expects HTMLElement
-              swiper.params.navigation.prevEl = prevRef.current;
-              // @ts-expect-error Swiper params navigation property expects HTMLElement
-              swiper.params.navigation.nextEl = nextRef.current;
+            onSwiper={(swiper) => {
+              // Swiper 인스턴스가 완전히 초기화된 후 navigation 업데이트
+              setTimeout(() => {
+                if (
+                  swiper.params.navigation &&
+                  typeof swiper.params.navigation !== 'boolean'
+                ) {
+                  swiper.params.navigation.prevEl = prevRef.current;
+                  swiper.params.navigation.nextEl = nextRef.current;
+                  swiper.navigation.destroy();
+                  swiper.navigation.init();
+                  swiper.navigation.update();
+                }
+              });
             }}
             spaceBetween={10}
             modules={[Navigation]}
