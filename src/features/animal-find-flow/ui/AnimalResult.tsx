@@ -10,6 +10,35 @@ import Empty from '../../../shared/ui/Empty';
 import { AnimalData } from '../../../shared/api/types';
 import Loading from '../../../shared/ui/Loading';
 
+const getBreedTypeByCode = (speciesCode: string): string => {
+  const cleanCode = speciesCode?.trim();
+  const code = parseInt(cleanCode, 10);
+
+  if (isNaN(code)) {
+    return '기타축종';
+  }
+
+  if (code === 117) {
+    return '기타축종';
+  }
+
+  if ((code >= 0 && code <= 116) || (code >= 118 && code <= 169)) {
+    return '강아지';
+  }
+
+  if (code >= 170) {
+    return '고양이';
+  }
+
+  return '기타축종';
+};
+
+const breedFilterMap: Record<string, string> = {
+  강아지: '강아지',
+  고양이: '고양이',
+  그외: '기타축종',
+};
+
 export default function AnimalResult() {
   const navigate = useNavigate();
   const { isOpen, open } = useModalStore();
@@ -73,10 +102,10 @@ export default function AnimalResult() {
         (weight === '15' && weightValue >= 10 && weightValue < 15) ||
         (weight === '20' && weightValue >= 15);
 
-      const speciesMatches =
-        (species === '강아지' && item.SPECIES_NM.includes('개')) ||
-        (species === '고양이' && item.SPECIES_NM.includes('고양이')) ||
-        (species === '그외' && item.SPECIES_NM.includes('기타축종'));
+      // 품종 매칭 로직 변경: 코드 범위 기반
+      const breedType = getBreedTypeByCode(item.SPECIES_NM);
+      const targetBreedType = breedFilterMap[species || ''] || species;
+      const speciesMatches = breedType === targetBreedType;
 
       const genderMatches =
         gender === '여아' ? item.SEX_NM === 'F' : item.SEX_NM === 'M';
