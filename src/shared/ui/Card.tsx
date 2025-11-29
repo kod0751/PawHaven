@@ -28,6 +28,29 @@ export default function Card({ data }: CardProps) {
     setImageLoaded(true);
   };
 
+  const getBreedTypeByCode = (speciesCode: string): string => {
+    const cleanCode = speciesCode?.trim();
+    const code = parseInt(cleanCode, 10);
+
+    if (isNaN(code)) {
+      return '기타축종';
+    }
+
+    if (code === 117) {
+      return '기타축종';
+    }
+
+    if ((code >= 0 && code <= 116) || (code >= 118 && code <= 169)) {
+      return '강아지';
+    }
+
+    if (code >= 170) {
+      return '고양이';
+    }
+
+    return '기타축종';
+  };
+
   return (
     <div className="min-w-[180px] max-w-[240px] w-full font-['NanumSquareNeoBold'] flex flex-col gap-1">
       <div className="relative">
@@ -44,7 +67,7 @@ export default function Card({ data }: CardProps) {
           src={
             imageError ? '/img/empty.png' : data.IMAGE_COURS || '/img/empty.png'
           }
-          alt={`${data.SPECIES_NM.replace(/\[.*?\]\s*/, '')} 사진`}
+          alt={`${getBreedTypeByCode(data.SPECIES_NM)} 사진`}
           loading="lazy"
           decoding="async"
           onLoad={handleImageLoad}
@@ -54,7 +77,7 @@ export default function Card({ data }: CardProps) {
       </div>
       <div className="flex justify-between my-1">
         <span className="font-[NanumSquareNeoHeavy] text-[1.2rem]">
-          {data.SPECIES_NM.replace(/\[.*?\]\s*/, '')}
+          {getBreedTypeByCode(data.SPECIES_NM)}
         </span>
         <button
           onClick={toggleBookmark}
