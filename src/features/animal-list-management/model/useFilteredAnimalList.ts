@@ -121,7 +121,10 @@ export function useFilteredAnimalList() {
         return false;
       }
 
-      if (activeFilters.status && animal.STATE_NM !== activeFilters.status) {
+      if (
+        activeFilters.status &&
+        !animal.STATE_NM?.includes(activeFilters.status)
+      ) {
         return false;
       }
 
