@@ -1,7 +1,8 @@
-import { useState, useMemo } from 'react';
+import { useMemo } from 'react';
 import { useAnimalList } from './useAnimalList';
 import { calculatePetAge } from '../../../shared/utils/calculatePetAge';
 import { FilterOptions } from './types';
+import { useSearchParams } from 'react-router-dom';
 
 // 필터 값을 실제 품종 타입으로 매핑
 const breedFilterMap = {
@@ -67,7 +68,34 @@ const isAgeInRange = (petAge: number, ageFilter: string): boolean => {
 
 export function useFilteredAnimalList() {
   const { data: allAnimals, isLoading, error } = useAnimalList();
-  const [filters, setFilters] = useState<FilterOptions>({});
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  // URL에서 필터 읽기
+  const filters: FilterOptions = useMemo(() => {
+    return {
+      region: searchParams.get('region') || undefined,
+      status: searchParams.get('status') || undefined,
+      breed: searchParams.get('breed') || undefined,
+      gender: searchParams.get('gender') || undefined,
+      neutered: searchParams.get('neutered') || undefined,
+      shelter: searchParams.get('shelter') || undefined,
+      age: searchParams.get('age') || undefined,
+    };
+  }, [searchParams]);
+
+  // 필터 업데이트 함수
+  const setFilters = (newFilters: FilterOptions) => {
+    const params = new URLSearchParams();
+
+    // 각 필터 값을 URL에 추가 ('전체'가 아니고 값이 있는 경우만)
+    Object.entries(newFilters).forEach(([key, value]) => {
+      if (value && value !== '전체') {
+        params.set(key, value);
+      }
+    });
+
+    setSearchParams(params);
+  };
 
   const filteredAnimals = useMemo(() => {
     if (!allAnimals) return [];
