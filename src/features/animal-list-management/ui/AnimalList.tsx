@@ -30,10 +30,15 @@ export default function AnimalList({
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
+    // 동물 리스트 섹션으로 스크롤
+    const animalListElement = document.getElementById('animal-list');
+    if (animalListElement) {
+      animalListElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   };
 
   return (
-    <section aria-labelledby="animal-list-title">
+    <section id="animal-list" aria-labelledby="animal-list-title">
       <Container className="py-8">
         <h2
           id="animal-list-title"

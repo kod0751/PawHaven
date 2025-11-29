@@ -31,7 +31,6 @@ export default function Pagination({
       <button
         onClick={() => {
           if (currentPage > 1) {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
             onPageChange(currentPage - 1);
           }
         }}
@@ -46,7 +45,6 @@ export default function Pagination({
         <button
           key={page}
           onClick={() => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
             onPageChange(page);
           }}
           className={cn(
@@ -63,7 +61,6 @@ export default function Pagination({
       <button
         onClick={() => {
           if (currentPage < totalPages) {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
             onPageChange(currentPage + 1);
           }
         }}
