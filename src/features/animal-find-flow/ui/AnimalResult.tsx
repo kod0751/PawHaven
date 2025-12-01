@@ -176,7 +176,7 @@ export default function AnimalResult() {
                   />
                 </div>
                 <div className="w-40 flex justify-around items-center text-lg">
-                  <span>{data.SPECIES_NM.replace(/\[.*?\]\s*/, '')}</span>
+                  <span>{getBreedTypeByCode(data.SPECIES_NM)}</span>
                   <span>{calculatePetAge(data.AGE_INFO)}살</span>
                 </div>
                 <button
