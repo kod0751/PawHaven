@@ -5,7 +5,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import Card from '../../../shared/ui/Card';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { useRef } from 'react';
+import { useState } from 'react';
 import { useOneDayList } from '../model/useOneDayList';
 import { getTomorrowDateString } from '../../../shared/utils/date';
 
@@ -13,8 +13,8 @@ export default function Carousel() {
   const tomorrowDate = getTomorrowDateString();
   const { data } = useOneDayList(tomorrowDate);
 
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
+  const [prevEl, setPrevEl] = useState<HTMLButtonElement | null>(null);
+  const [nextEl, setNextEl] = useState<HTMLButtonElement | null>(null);
 
   return (
     <section aria-labelledby="carousel-title" className="py-12">
@@ -29,23 +29,8 @@ export default function Carousel() {
         <div className="relative w-full">
           <Swiper
             navigation={{
-              prevEl: prevRef.current,
-              nextEl: nextRef.current,
-            }}
-            onSwiper={(swiper) => {
-              // Swiper 인스턴스가 완전히 초기화된 후 navigation 업데이트
-              setTimeout(() => {
-                if (
-                  swiper.params.navigation &&
-                  typeof swiper.params.navigation !== 'boolean'
-                ) {
-                  swiper.params.navigation.prevEl = prevRef.current;
-                  swiper.params.navigation.nextEl = nextRef.current;
-                  swiper.navigation.destroy();
-                  swiper.navigation.init();
-                  swiper.navigation.update();
-                }
-              });
+              prevEl: prevEl,
+              nextEl: nextEl,
             }}
             spaceBetween={10}
             modules={[Navigation]}
@@ -69,7 +54,7 @@ export default function Carousel() {
           </Swiper>
 
           <button
-            ref={prevRef}
+            ref={setPrevEl}
             className="absolute top-1/2 -left-5 -translate-y-1/2 z-10 md:-left-10 xl:-left-15"
             aria-label="이전 슬라이드"
           >
@@ -80,7 +65,7 @@ export default function Carousel() {
           </button>
 
           <button
-            ref={nextRef}
+            ref={setNextEl}
             className="absolute top-1/2 -right-5 -translate-y-1/2 z-10 md:-right-10 xl:-right-15"
             aria-label="다음 슬라이드"
           >
